@@ -1,6 +1,7 @@
 package ui;
 
 import entities.*;
+import enums.GameState;
 import utils.CloneUtils;
 import utils.Constants;
 import utils.Fac;
@@ -10,14 +11,26 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class MainUI extends JFrame implements Runnable {
-    private int[][] map;
-    private Block block;
-    private Block targetBlock;
-    private HB hb;
-    private int dropInterval = 0;
-    private Block nextBlock;
+    private int[][] map;                            //格子背景
+    private Block block;                            //活动方块
+    private Block targetBlock;                      //提示方块
+    private HB hb;                                  //画板
+    private int dropInterval = 0;                   //方块下落间隔
+    private Block nextBlock;                        //下一个方块
+    private GameState state = GameState.WELCOME;    //游戏状态
+    private GameFont welcomeFont =
+            new GameFont("俄罗斯方块", Constants.WINDOW_WIDTH / 4, -Constants.BLOCK_SIZE, Constants.BLOCK_SIZE);     //欢迎界面游戏标题
+    private GameImage welcomeImage1 =
+            new GameImage("btn_play.png", (Constants.WINDOW_WIDTH - Medias.getImage("btn_play.png").getWidth()) / 2, welcomeFont.getY() + Constants.BLOCK_SIZE);     //欢迎界面图片按钮
+    private GameImage welcomeImage2 =
+            new GameImage("exit.png", Constants.WINDOW_WIDTH - 100, Constants.WINDOW_HEIGHT - 100);
+    private GameFont countDown = new GameFont("3", Constants.WINDOW_WIDTH / 2, Constants.WINDOW_HEIGHT / 2, Constants.BLOCK_SIZE * 3);
+    private int countDownInterval = 0;
+
 
     public MainUI() {
         setSize(Constants.WINDOW_WIDTH, Constants.WINDOW_HEIGHT);
@@ -34,6 +47,8 @@ public class MainUI extends JFrame implements Runnable {
         hb = new HB();
         c.add(hb);
         c.addKeyListener(new KeyAd());
+        c.addMouseListener(new MouseAd());
+        c.addMouseMotionListener(new MouseAd());
 
         setVisible(true);
     }
@@ -48,40 +63,112 @@ public class MainUI extends JFrame implements Runnable {
     class KeyAd extends KeyAdapter {
         @Override
         public void keyPressed(KeyEvent e) {
-            switch (e.getKeyCode()) {
-                case KeyEvent.VK_UP:
-                    block.rotate();
-                    block.isRotateSuccess(map);
-                    refreshTargetBlock();
-                    break;
-                case KeyEvent.VK_DOWN:
-                    block.moveDown(map);
-                    break;
-                case KeyEvent.VK_LEFT:
-                    block.moveLeft(map);
-                    refreshTargetBlock();
-                    break;
-                case KeyEvent.VK_RIGHT:
-                    block.moveRight(map);
-                    refreshTargetBlock();
-                    break;
-                case KeyEvent.VK_SPACE:
-                    while (block.moveDown(map)) {
+            if (state == GameState.GAMING) {
+                switch (e.getKeyCode()) {
+                    case KeyEvent.VK_UP:
+                        block.rotate();
+                        block.isRotateSuccess(map);
+                        refreshTargetBlock();
+                        break;
+                    case KeyEvent.VK_DOWN:
+                        block.moveDown(map);
+                        break;
+                    case KeyEvent.VK_LEFT:
+                        block.moveLeft(map);
+                        refreshTargetBlock();
+                        break;
+                    case KeyEvent.VK_RIGHT:
+                        block.moveRight(map);
+                        refreshTargetBlock();
+                        break;
+                    case KeyEvent.VK_SPACE:
+                        while (block.moveDown(map)) {
 
-                    }
-                    frozen();
+                        }
+                        frozen();
+                        break;
+                }
+            }
+
+            if(e.getKeyCode() == KeyEvent.VK_1){
+                if(state == state.GAMING){
+                    state = GameState.PAUSE;
+                }else if (state == GameState.PAUSE){
+                    state = GameState.GAMING;
+                }
+            }
+
+        }
+    }
+
+    class MouseAd extends MouseAdapter {
+        @Override
+        public void mouseClicked(MouseEvent e) {
+            if (state == GameState.GAME_SELECT) {
+                if (welcomeImage1.getRectangle().contains(e.getX(), e.getY())) {
+                    state = GameState.COUNTDOWN;
+                } else if (welcomeImage2.getRectangle().contains(e.getX(), e.getY())) {
+                    System.exit(0);
+                }
             }
         }
+
+        @Override
+        public void mouseMoved(MouseEvent e) {
+            if (state == GameState.GAME_SELECT) {
+                if (welcomeImage1.getRectangle().contains(e.getX(), e.getY())) {
+                    welcomeImage1.setImage(Medias.getImage("btn_play_click.png"));
+                } else if (welcomeImage2.getRectangle().contains(e.getX(), e.getY())) {
+                    welcomeImage2.setImage(Medias.getImage("exit_click.png"));
+                } else {
+                    welcomeImage1.setImage(Medias.getImage("btn_play.png"));
+                    welcomeImage2.setImage(Medias.getImage("exit.png"));
+                }
+            }
+
+            hb.repaint();
+        }
+
     }
 
     class HB extends JPanel {
         @Override
         protected void paintComponent(Graphics g) {
             g.clearRect(0, 0, Constants.WINDOW_WIDTH, Constants.WINDOW_HEIGHT);
-            drawMap(g);
-            drawBlock(g);
-            drawTargetBlock(g);
-            drawNextBlock(g);
+            if (state == GameState.GAMING) {
+                drawMap(g);
+                drawBlock(g);
+                drawTargetBlock(g);
+                drawNextBlock(g);
+            } else if (state == GameState.GAME_SELECT) {
+                drawWelcome(g);
+            } else if (state == GameState.COUNTDOWN) {
+                drawCountDown(g);
+            } else if (state == GameState.WELCOME) {
+                drawWelcome(g);
+            }else if(state == GameState.PAUSE){
+                drawMap(g);
+                drawBlock(g);
+                drawTargetBlock(g);
+                drawNextBlock(g);
+            }
+
+        }
+
+        private void drawCountDown(Graphics g) {
+            g.setColor(Color.black);
+            g.setFont(new Font("微软雅黑", Font.ITALIC, countDown.getSize()));
+            g.drawImage(Medias.getImage("bg.jpg"), 0, 0, Constants.WINDOW_WIDTH, Constants.WINDOW_HEIGHT, this);
+            g.drawString(countDown.getText(), countDown.getX(), countDown.getY());
+
+        }
+
+        private void drawWelcome(Graphics g) {
+            g.drawImage(Medias.getImage("bg.jpg"), 0, 0, Constants.WINDOW_WIDTH, Constants.WINDOW_HEIGHT, this);
+            g.setFont(new Font("微软雅黑", Font.ITALIC, welcomeFont.getSize()));
+            g.drawString(welcomeFont.getText(), welcomeFont.getX(), welcomeFont.getY());
+            g.drawImage(welcomeImage1.getImage(), welcomeImage1.getX(), welcomeImage1.getY(), this);
+            g.drawImage(welcomeImage2.getImage(), welcomeImage2.getX(), welcomeImage2.getY(), this);
         }
 
         private void drawNextBlock(Graphics g) {
@@ -90,8 +177,8 @@ public class MainUI extends JFrame implements Runnable {
                     int index = nextBlock.getBlock()[i][j];
                     if (index != 0) {
                         g.drawImage(Medias.getImage(index + ".png"),
-                                nextBlock.getX() * Constants.BLOCK_SIZE + j * Constants.BLOCK_SIZE,
-                                Constants.BLOCK_SIZE,
+                                nextBlock.getX() * Constants.BLOCK_SIZE + (7 + j) * Constants.BLOCK_SIZE,
+                                nextBlock.getY() * Constants.BLOCK_SIZE + (i + 1) * Constants.BLOCK_SIZE,
                                 Constants.BLOCK_SIZE,
                                 Constants.BLOCK_SIZE,
                                 this);
@@ -137,7 +224,7 @@ public class MainUI extends JFrame implements Runnable {
                 }
             }
 
-            g.fill3DRect((Constants.COLUMN) * Constants.BLOCK_SIZE,0,(Constants.WINDOW_WIDTH - Constants.COLUMN) * Constants.BLOCK_SIZE,Constants.WINDOW_HEIGHT,true);
+            g.fill3DRect((Constants.COLUMN) * Constants.BLOCK_SIZE, 0, (Constants.WINDOW_WIDTH - Constants.COLUMN) * Constants.BLOCK_SIZE, Constants.WINDOW_HEIGHT, true);
         }
 
         private void drawBlock(Graphics g) {
@@ -165,7 +252,30 @@ public class MainUI extends JFrame implements Runnable {
     @Override
     public void run() {
         while (true) {
-            blockDrop();
+            if (state == GameState.WELCOME) {
+                welcomeFont.moveDown();
+                welcomeImage1.moveDown();
+
+                if (welcomeFont.getY() > 5 * Constants.BLOCK_SIZE) {
+                    state = GameState.GAME_SELECT;
+                }
+            } else if (state == GameState.GAME_SELECT) {
+
+            } else if (state == GameState.COUNTDOWN) {
+                countDown.setSize(countDown.getSize() - 1);
+                if (countDown.getSize() <= 0) {
+                    countDown.setText(Integer.parseInt(countDown.getText()) - 1 + "");
+                    countDown.setSize(Constants.BLOCK_SIZE * 3);
+                }
+                if ("0".equals(countDown.getText())) {
+                    state = GameState.GAMING;
+                }
+            } else {
+                if (state == GameState.GAMING) {
+                    blockDrop();
+                }
+            }
+
             hb.repaint();
             try {
                 Thread.sleep(10);
@@ -173,6 +283,7 @@ public class MainUI extends JFrame implements Runnable {
                 e.printStackTrace();
             }
         }
+
     }
 
     private void blockDrop() {
@@ -199,6 +310,12 @@ public class MainUI extends JFrame implements Runnable {
         int index;
         while ((index = isFullRow()) != -1) {
             fuckRow(index);
+        }
+        refreshTargetBlock();
+        for(int i = 0 ; i < Constants.COLUMN ; i ++){
+            if(map[0][i] != 0){
+                state = GameState.OVER;
+            }
         }
     }
 
