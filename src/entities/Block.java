@@ -2,6 +2,8 @@ package entities;
 
 
 import utils.Constants;
+import utils.Medias;
+import utils.SoundUtils;
 
 import java.io.Serializable;
 
@@ -56,10 +58,12 @@ public class Block implements Serializable{
     public boolean moveLeft(int[][] map) {
         x--;
         if (check(map) == false) {
-
+            SoundUtils.Play(Medias.getAudio("sfx_movefail.wav"),false);
             x++;
             return false;
         }
+
+        SoundUtils.Play(Medias.getAudio("sfx_move.wav"),false);
         return true;
     }
 
@@ -72,9 +76,11 @@ public class Block implements Serializable{
     public boolean moveRight(int[][] map) {
         x++;
         if (check(map) == false) {
+            SoundUtils.Play(Medias.getAudio("sfx_movefail.wav"),false);
             x--;
             return false;
         }
+        SoundUtils.Play(Medias.getAudio("sfx_move.wav"),false);
         return true;
     }
 
@@ -105,10 +111,13 @@ public class Block implements Serializable{
      */
     public boolean isRotateSuccess(int[][] map) {
         if (check(map) == false) {
+            SoundUtils.Play(Medias.getAudio("sfx_rotatefail.wav"),false);
             rotate();
             rotate();
             rotate();
             //System.out.println("返回未旋转状态");
+        }else{
+            SoundUtils.Play(Medias.getAudio("sfx_rotate.wav"),false);
         }
         return true;
     }

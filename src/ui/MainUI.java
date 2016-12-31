@@ -2,11 +2,7 @@ package ui;
 
 import entities.*;
 import enums.GameState;
-import sun.security.util.Length;
-import utils.CloneUtils;
-import utils.Constants;
-import utils.Fac;
-import utils.Medias;
+import utils.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -83,6 +79,7 @@ public class MainUI extends JFrame implements Runnable {
                         refreshTargetBlock();
                         break;
                     case KeyEvent.VK_SPACE:
+                        SoundUtils.Play(Medias.getAudio("sfx_harddrop.wav"),false);
                         while (block.moveDown(map)) {
 
                         }
@@ -108,6 +105,7 @@ public class MainUI extends JFrame implements Runnable {
             if (state == GameState.GAME_SELECT) {
                 if (startImage.getRectangle().contains(e.getX(), e.getY())) {
                     state = GameState.COUNTDOWN;
+                    SoundUtils.Play(Medias.getAudio("countdown.wav"),false);
                 } else if (exitImage.getRectangle().contains(e.getX(), e.getY())) {
                     System.exit(0);
                 }
@@ -137,6 +135,12 @@ public class MainUI extends JFrame implements Runnable {
                     exitImage.setImage(Medias.getImage("exit_click.png"));
                 } else {
                     startImage.setImage(Medias.getImage("btn_play.png"));
+                    exitImage.setImage(Medias.getImage("exit.png"));
+                }
+            } else if(state == GameState.OVER){
+                if(exitImage.getRectangle().contains(e.getX(),e.getY())){
+                    exitImage.setImage(Medias.getImage("exit_click.png"));
+                }else {
                     exitImage.setImage(Medias.getImage("exit.png"));
                 }
             }
@@ -322,6 +326,7 @@ public class MainUI extends JFrame implements Runnable {
     }
 
     private void frozen() {
+        SoundUtils.Play(Medias.getAudio("sfx_lockdown.wav"),false);
         for (int i = 0; i < block.getBlock().length; i++) {
             for (int j = 0; j < block.getBlock()[i].length; j++) {
                 if (block.getBlock()[i][j] != 0) {
@@ -340,6 +345,7 @@ public class MainUI extends JFrame implements Runnable {
         for (int i = 0; i < Constants.COLUMN; i++) {
             if (map[0][i] != 0) {
                 state = GameState.OVER;
+                SoundUtils.Play(Medias.getAudio("sfx_gameover.wav"),false);
             }
         }
     }
@@ -355,6 +361,7 @@ public class MainUI extends JFrame implements Runnable {
             for (int j = 0; j < map[i].length; j++) {
                 map[i][j] = map[i - 1][j];
             }
+            SoundUtils.Play(Medias.getAudio("sfx_single.wav"),false);
         }
     }
 
