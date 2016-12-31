@@ -10,6 +10,7 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.*;
 
 public class MainUI extends JFrame implements Runnable {
     private int[][] map;                            //格子背景
@@ -28,6 +29,7 @@ public class MainUI extends JFrame implements Runnable {
     private GameFont countDown = new GameFont("3", Constants.WINDOW_WIDTH / 2, Constants.WINDOW_HEIGHT / 2, Constants.BLOCK_SIZE * 3);
     private GameImage defeate = new GameImage("defeat1.png", 100, -Medias.getImage("defeat.png").getHeight());
     private GameImage restartImage = new GameImage("restart.png", 100, Constants.WINDOW_HEIGHT - 100);
+    private int score = 0;
 
     public MainUI() {
         setSize(Constants.WINDOW_WIDTH, Constants.WINDOW_HEIGHT);
@@ -79,11 +81,17 @@ public class MainUI extends JFrame implements Runnable {
                         refreshTargetBlock();
                         break;
                     case KeyEvent.VK_SPACE:
-                        SoundUtils.Play(Medias.getAudio("sfx_harddrop.wav"),false);
+                        SoundUtils.Play(Medias.getAudio("sfx_harddrop.wav"), false);
                         while (block.moveDown(map)) {
 
                         }
                         frozen();
+                        break;
+                    case KeyEvent.VK_S:
+                        save();
+                        break;
+                    case KeyEvent.VK_L:
+                        load();
                         break;
                 }
             }
@@ -97,6 +105,47 @@ public class MainUI extends JFrame implements Runnable {
             }
 
         }
+
+        private void load() {
+            File file = new File("conf/record");
+            ObjectInputStream objectInputStream = null;
+            try {
+                objectInputStream = new ObjectInputStream(new FileInputStream(file));
+                Object object = objectInputStream.readObject();
+                if(object instanceof Save){
+                    Save save = (Save)object;
+                    map = save.getMap();
+                    block = save.getBlock();
+                    targetBlock = save.getTargetBlock();
+                    nextBlock = save.getNextBlock();
+                    score = save.getScore();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
+
+        private void save() {
+            File file = new File("conf/record");
+            ObjectOutputStream objectOutputStream = null;
+            Save save = new Save(map, block, targetBlock, nextBlock, score);
+            try {
+                objectOutputStream = new ObjectOutputStream(new FileOutputStream(file));
+                objectOutputStream.writeObject(save);
+            } catch (IOException e) {
+                e.printStackTrace();
+            } finally {
+                if (objectOutputStream != null) {
+                    try {
+                        objectOutputStream.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }
     }
 
     class MouseAd extends MouseAdapter {
@@ -105,7 +154,7 @@ public class MainUI extends JFrame implements Runnable {
             if (state == GameState.GAME_SELECT) {
                 if (startImage.getRectangle().contains(e.getX(), e.getY())) {
                     state = GameState.COUNTDOWN;
-                    SoundUtils.Play(Medias.getAudio("countdown.wav"),false);
+                    SoundUtils.Play(Medias.getAudio("countdown.wav"), false);
                 } else if (exitImage.getRectangle().contains(e.getX(), e.getY())) {
                     System.exit(0);
                 }
@@ -120,6 +169,7 @@ public class MainUI extends JFrame implements Runnable {
                     nextBlock = Fac.getBlock();
                     refreshTargetBlock();
                     state = GameState.GAMING;
+                    score = 0;
                 } else if (exitImage.getRectangle().contains(e.getX(), e.getY())) {
                     System.exit(0);
                 }
@@ -137,10 +187,10 @@ public class MainUI extends JFrame implements Runnable {
                     startImage.setImage(Medias.getImage("btn_play.png"));
                     exitImage.setImage(Medias.getImage("exit.png"));
                 }
-            } else if(state == GameState.OVER){
-                if(exitImage.getRectangle().contains(e.getX(),e.getY())){
+            } else if (state == GameState.OVER) {
+                if (exitImage.getRectangle().contains(e.getX(), e.getY())) {
                     exitImage.setImage(Medias.getImage("exit_click.png"));
-                }else {
+                } else {
                     exitImage.setImage(Medias.getImage("exit.png"));
                 }
             }
@@ -159,6 +209,9 @@ public class MainUI extends JFrame implements Runnable {
                 drawBlock(g);
                 drawTargetBlock(g);
                 drawNextBlock(g);
+                g.setColor(Color.white);
+                g.setFont(new Font("微软雅黑", Font.BOLD, Constants.BLOCK_SIZE / 2));
+                g.drawString("您消除了" + score + "行", 11 * Constants.BLOCK_SIZE, 7 * Constants.BLOCK_SIZE);
             } else if (state == GameState.GAME_SELECT) {
                 drawWelcome(g);
             } else if (state == GameState.COUNTDOWN) {
@@ -175,6 +228,10 @@ public class MainUI extends JFrame implements Runnable {
                 drawGameImage(g, defeate);
                 drawGameImage(g, restartImage);
                 drawGameImage(g, exitImage);
+                g.setColor(Color.WHITE);
+                g.setFont(new Font("微软雅黑", Font.BOLD, Constants.BLOCK_SIZE / 2));
+                g.drawString("您消除了" + score + "行", 7 * Constants.BLOCK_SIZE, 12 * Constants.BLOCK_SIZE);
+                g.drawString("历史最佳：" + Fac.getMaxScore(), 7 * Constants.BLOCK_SIZE, 14 * Constants.BLOCK_SIZE);
             }
 
         }
@@ -326,7 +383,7 @@ public class MainUI extends JFrame implements Runnable {
     }
 
     private void frozen() {
-        SoundUtils.Play(Medias.getAudio("sfx_lockdown.wav"),false);
+        SoundUtils.Play(Medias.getAudio("sfx_lockdown.wav"), false);
         for (int i = 0; i < block.getBlock().length; i++) {
             for (int j = 0; j < block.getBlock()[i].length; j++) {
                 if (block.getBlock()[i][j] != 0) {
@@ -344,8 +401,13 @@ public class MainUI extends JFrame implements Runnable {
         refreshTargetBlock();
         for (int i = 0; i < Constants.COLUMN; i++) {
             if (map[0][i] != 0) {
+                int record = Fac.getMaxScore();
                 state = GameState.OVER;
-                SoundUtils.Play(Medias.getAudio("sfx_gameover.wav"),false);
+                SoundUtils.Play(Medias.getAudio("sfx_gameover.wav"), false);
+                if (score > record) {
+                    Fac.setMaxScore(score);
+                }
+                break;
             }
         }
     }
@@ -361,8 +423,9 @@ public class MainUI extends JFrame implements Runnable {
             for (int j = 0; j < map[i].length; j++) {
                 map[i][j] = map[i - 1][j];
             }
-            SoundUtils.Play(Medias.getAudio("sfx_single.wav"),false);
+            SoundUtils.Play(Medias.getAudio("sfx_single.wav"), false);
         }
+        score++;
     }
 
     private int isFullRow() {

@@ -2,16 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="219c7db0-dad0-4f57-beca-8bf21c1806cb" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/medias/countdown.wav" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/medias/sfx_single.wav" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/俄罗斯方块/entities/Block.class" afterPath="$PROJECT_DIR$/out/production/俄罗斯方块/entities/Block.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/conf/recored.properties" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/entities/Save.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/俄罗斯方块/ui/MainUI$HB.class" afterPath="$PROJECT_DIR$/out/production/俄罗斯方块/ui/MainUI$HB.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/俄罗斯方块/ui/MainUI$KeyAd.class" afterPath="$PROJECT_DIR$/out/production/俄罗斯方块/ui/MainUI$KeyAd.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/俄罗斯方块/ui/MainUI$MouseAd.class" afterPath="$PROJECT_DIR$/out/production/俄罗斯方块/ui/MainUI$MouseAd.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/俄罗斯方块/ui/MainUI.class" afterPath="$PROJECT_DIR$/out/production/俄罗斯方块/ui/MainUI.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/俄罗斯方块/utils/Fac.class" afterPath="$PROJECT_DIR$/out/production/俄罗斯方块/utils/Fac.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/entities/Block.java" afterPath="$PROJECT_DIR$/src/entities/Block.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ui/MainUI.java" afterPath="$PROJECT_DIR$/src/ui/MainUI.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/utils/Fac.java" afterPath="$PROJECT_DIR$/src/utils/Fac.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -30,14 +30,13 @@
       <file leaf-file-name="MainUI.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/ui/MainUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
-              <caret line="143" column="60" lean-forward="false" selection-start-line="143" selection-start-column="60" selection-end-line="143" selection-end-column="60" />
+            <state relative-caret-position="399">
+              <caret line="21" column="58" lean-forward="true" selection-start-line="21" selection-start-column="58" selection-end-line="21" selection-end-column="58" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#moveTargetBlock#0;class#MainUI#0" expanded="false" />
-                <element signature="class#KeyAd#0;class#MainUI#0" expanded="false" />
-                <element signature="method#mouseClicked#0;class#MouseAd#0;class#MainUI#0" expanded="false" />
-                <element signature="class#HB#0;class#MainUI#0" expanded="false" />
+                <element signature="class#MouseAd#0;class#MainUI#0" expanded="false" />
+                <element signature="method#mouseMoved#0;class#MouseAd#0;class#MainUI#0" expanded="false" />
                 <element signature="method#drawCountDown#0;class#HB#0;class#MainUI#0" expanded="false" />
                 <element signature="method#drawNextBlock#0;class#HB#0;class#MainUI#0" expanded="false" />
                 <element signature="method#drawTargetBlock#0;class#HB#0;class#MainUI#0" expanded="false" />
@@ -45,11 +44,49 @@
                 <element signature="method#drawBlock#0;class#HB#0;class#MainUI#0" expanded="false" />
                 <element signature="method#main#0;class#MainUI#0" expanded="false" />
                 <element signature="method#blockDrop#0;class#MainUI#0" expanded="false" />
-                <element signature="method#frozen#0;class#MainUI#0" expanded="false" />
                 <element signature="method#refreshTargetBlock#0;class#MainUI#0" expanded="false" />
-                <element signature="method#fuckRow#0;class#MainUI#0" expanded="false" />
                 <element signature="method#isFullRow#0;class#MainUI#0" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Save.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/entities/Save.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="361">
+              <caret line="19" column="29" lean-forward="false" selection-start-line="19" selection-start-column="29" selection-end-line="19" selection-end-column="29" />
+              <folding>
+                <element signature="e#556#557#0" expanded="true" />
+                <element signature="e#595#596#0" expanded="true" />
+                <element signature="e#625#626#0" expanded="true" />
+                <element signature="e#656#657#0" expanded="true" />
+                <element signature="e#684#685#0" expanded="true" />
+                <element signature="e#725#726#0" expanded="true" />
+                <element signature="e#759#760#0" expanded="true" />
+                <element signature="e#796#797#0" expanded="true" />
+                <element signature="e#830#831#0" expanded="true" />
+                <element signature="e#883#884#0" expanded="true" />
+                <element signature="e#929#930#0" expanded="true" />
+                <element signature="e#964#965#0" expanded="true" />
+                <element signature="e#996#997#0" expanded="true" />
+                <element signature="e#1045#1046#0" expanded="true" />
+                <element signature="e#1087#1088#0" expanded="true" />
+                <element signature="e#1116#1117#0" expanded="true" />
+                <element signature="e#1144#1145#0" expanded="true" />
+                <element signature="e#1183#1184#0" expanded="true" />
+                <element signature="e#1217#1218#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Fac.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/utils/Fac.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="442">
+              <caret line="70" column="51" lean-forward="false" selection-start-line="70" selection-start-column="51" selection-end-line="70" selection-end-column="51" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -58,7 +95,7 @@
         <entry file="file://$PROJECT_DIR$/src/entities/GameImage.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="266">
-              <caret line="21" column="14" lean-forward="true" selection-start-line="21" selection-start-column="14" selection-end-line="21" selection-end-column="14" />
+              <caret line="21" column="14" lean-forward="false" selection-start-line="21" selection-start-column="14" selection-end-line="21" selection-end-column="14" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -89,8 +126,8 @@
       <file leaf-file-name="Block.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/entities/Block.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="460">
-              <caret line="119" column="67" lean-forward="false" selection-start-line="119" selection-start-column="67" selection-end-line="119" selection-end-column="67" />
+            <state relative-caret-position="95">
+              <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -136,7 +173,6 @@
         <option value="$PROJECT_DIR$/src/entities/O.java" />
         <option value="$PROJECT_DIR$/src/entities/T.java" />
         <option value="$PROJECT_DIR$/src/entities/Z.java" />
-        <option value="$PROJECT_DIR$/src/utils/Fac.java" />
         <option value="$PROJECT_DIR$/src/entities/S.java" />
         <option value="$PROJECT_DIR$/src/entities/State.java" />
         <option value="$PROJECT_DIR$/src/entities/GameState.java" />
@@ -146,6 +182,9 @@
         <option value="$PROJECT_DIR$/src/entities/GameImage.java" />
         <option value="$PROJECT_DIR$/src/entities/GameFont.java" />
         <option value="$PROJECT_DIR$/src/entities/Block.java" />
+        <option value="$PROJECT_DIR$/conf/recored.properties" />
+        <option value="$PROJECT_DIR$/src/utils/Fac.java" />
+        <option value="$PROJECT_DIR$/src/entities/Save.java" />
         <option value="$PROJECT_DIR$/src/ui/MainUI.java" />
       </list>
     </option>
@@ -254,6 +293,20 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="medias" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="俄罗斯方块" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="俄罗斯方块" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="conf" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -705,12 +758,12 @@
       <workItem from="1482801987957" duration="102000" />
       <workItem from="1483092560778" duration="88000" />
       <workItem from="1483092771909" duration="5939000" />
-      <workItem from="1483150913986" duration="11977000" />
+      <workItem from="1483150913986" duration="18032000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="44520000" />
+    <option name="totallyTimeSpent" value="50575000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
@@ -764,14 +817,54 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/enums/GameState.java">
+    <entry file="file://$PROJECT_DIR$/src/entities/GameState.java" />
+    <entry file="file://$PROJECT_DIR$/src/entities/Block.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="57">
-          <caret line="3" column="11" lean-forward="false" selection-start-line="3" selection-start-column="11" selection-end-line="3" selection-end-column="11" />
+        <state relative-caret-position="247">
+          <caret line="13" column="37" lean-forward="false" selection-start-line="13" selection-start-column="37" selection-end-line="13" selection-end-column="37" />
           <folding />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/CloneUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="4" column="21" lean-forward="false" selection-start-line="4" selection-start-column="21" selection-end-line="4" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/Constants.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="38">
+          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ui/MainUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#moveTargetBlock#0;class#MainUI#0" expanded="false" />
+            <element signature="class#MouseAd#0;class#MainUI#0" expanded="false" />
+            <element signature="method#mouseMoved#0;class#MouseAd#0;class#MainUI#0" expanded="false" />
+            <element signature="method#drawCountDown#0;class#HB#0;class#MainUI#0" expanded="false" />
+            <element signature="method#drawNextBlock#0;class#HB#0;class#MainUI#0" expanded="false" />
+            <element signature="method#drawTargetBlock#0;class#HB#0;class#MainUI#0" expanded="false" />
+            <element signature="method#drawMap#0;class#HB#0;class#MainUI#0" expanded="false" />
+            <element signature="method#drawBlock#0;class#HB#0;class#MainUI#0" expanded="false" />
+            <element signature="method#main#0;class#MainUI#0" expanded="false" />
+            <element signature="method#blockDrop#0;class#MainUI#0" expanded="false" />
+            <element signature="method#refreshTargetBlock#0;class#MainUI#0" expanded="false" />
+            <element signature="method#isFullRow#0;class#MainUI#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/entities/GameState.java" />
     <entry file="file://$PROJECT_DIR$/src/entities/Block.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="209">
@@ -790,8 +883,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/utils/Constants.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="4" column="44" lean-forward="true" selection-start-line="4" selection-start-column="44" selection-end-line="4" selection-end-column="44" />
+        <state relative-caret-position="38">
+          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -803,9 +896,8 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#moveTargetBlock#0;class#MainUI#0" expanded="false" />
-            <element signature="class#KeyAd#0;class#MainUI#0" expanded="false" />
-            <element signature="method#mouseClicked#0;class#MouseAd#0;class#MainUI#0" expanded="false" />
-            <element signature="class#HB#0;class#MainUI#0" expanded="false" />
+            <element signature="class#MouseAd#0;class#MainUI#0" expanded="false" />
+            <element signature="method#mouseMoved#0;class#MouseAd#0;class#MainUI#0" expanded="false" />
             <element signature="method#drawCountDown#0;class#HB#0;class#MainUI#0" expanded="false" />
             <element signature="method#drawNextBlock#0;class#HB#0;class#MainUI#0" expanded="false" />
             <element signature="method#drawTargetBlock#0;class#HB#0;class#MainUI#0" expanded="false" />
@@ -813,9 +905,54 @@
             <element signature="method#drawBlock#0;class#HB#0;class#MainUI#0" expanded="false" />
             <element signature="method#main#0;class#MainUI#0" expanded="false" />
             <element signature="method#blockDrop#0;class#MainUI#0" expanded="false" />
-            <element signature="method#frozen#0;class#MainUI#0" expanded="false" />
             <element signature="method#refreshTargetBlock#0;class#MainUI#0" expanded="false" />
-            <element signature="method#fuckRow#0;class#MainUI#0" expanded="false" />
+            <element signature="method#isFullRow#0;class#MainUI#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/entities/GameState.java" />
+    <entry file="file://$PROJECT_DIR$/src/entities/Block.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="13" column="37" lean-forward="false" selection-start-line="13" selection-start-column="37" selection-end-line="13" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/CloneUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="4" column="21" lean-forward="false" selection-start-line="4" selection-start-column="21" selection-end-line="4" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/Constants.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="38">
+          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ui/MainUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#moveTargetBlock#0;class#MainUI#0" expanded="false" />
+            <element signature="class#MouseAd#0;class#MainUI#0" expanded="false" />
+            <element signature="method#mouseMoved#0;class#MouseAd#0;class#MainUI#0" expanded="false" />
+            <element signature="method#drawCountDown#0;class#HB#0;class#MainUI#0" expanded="false" />
+            <element signature="method#drawNextBlock#0;class#HB#0;class#MainUI#0" expanded="false" />
+            <element signature="method#drawTargetBlock#0;class#HB#0;class#MainUI#0" expanded="false" />
+            <element signature="method#drawMap#0;class#HB#0;class#MainUI#0" expanded="false" />
+            <element signature="method#drawBlock#0;class#HB#0;class#MainUI#0" expanded="false" />
+            <element signature="method#main#0;class#MainUI#0" expanded="false" />
+            <element signature="method#blockDrop#0;class#MainUI#0" expanded="false" />
+            <element signature="method#refreshTargetBlock#0;class#MainUI#0" expanded="false" />
             <element signature="method#isFullRow#0;class#MainUI#0" expanded="false" />
           </folding>
         </state>
@@ -853,9 +990,8 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#moveTargetBlock#0;class#MainUI#0" expanded="false" />
-            <element signature="class#KeyAd#0;class#MainUI#0" expanded="false" />
-            <element signature="method#mouseClicked#0;class#MouseAd#0;class#MainUI#0" expanded="false" />
-            <element signature="class#HB#0;class#MainUI#0" expanded="false" />
+            <element signature="class#MouseAd#0;class#MainUI#0" expanded="false" />
+            <element signature="method#mouseMoved#0;class#MouseAd#0;class#MainUI#0" expanded="false" />
             <element signature="method#drawCountDown#0;class#HB#0;class#MainUI#0" expanded="false" />
             <element signature="method#drawNextBlock#0;class#HB#0;class#MainUI#0" expanded="false" />
             <element signature="method#drawTargetBlock#0;class#HB#0;class#MainUI#0" expanded="false" />
@@ -863,159 +999,7 @@
             <element signature="method#drawBlock#0;class#HB#0;class#MainUI#0" expanded="false" />
             <element signature="method#main#0;class#MainUI#0" expanded="false" />
             <element signature="method#blockDrop#0;class#MainUI#0" expanded="false" />
-            <element signature="method#frozen#0;class#MainUI#0" expanded="false" />
             <element signature="method#refreshTargetBlock#0;class#MainUI#0" expanded="false" />
-            <element signature="method#fuckRow#0;class#MainUI#0" expanded="false" />
-            <element signature="method#isFullRow#0;class#MainUI#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/entities/GameState.java" />
-    <entry file="file://$PROJECT_DIR$/src/entities/Block.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="13" column="37" lean-forward="false" selection-start-line="13" selection-start-column="37" selection-end-line="13" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/utils/CloneUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="4" column="21" lean-forward="false" selection-start-line="4" selection-start-column="21" selection-end-line="4" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/utils/Constants.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="38">
-          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ui/MainUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#moveTargetBlock#0;class#MainUI#0" expanded="false" />
-            <element signature="class#KeyAd#0;class#MainUI#0" expanded="false" />
-            <element signature="method#mouseClicked#0;class#MouseAd#0;class#MainUI#0" expanded="false" />
-            <element signature="class#HB#0;class#MainUI#0" expanded="false" />
-            <element signature="method#drawCountDown#0;class#HB#0;class#MainUI#0" expanded="false" />
-            <element signature="method#drawNextBlock#0;class#HB#0;class#MainUI#0" expanded="false" />
-            <element signature="method#drawTargetBlock#0;class#HB#0;class#MainUI#0" expanded="false" />
-            <element signature="method#drawMap#0;class#HB#0;class#MainUI#0" expanded="false" />
-            <element signature="method#drawBlock#0;class#HB#0;class#MainUI#0" expanded="false" />
-            <element signature="method#main#0;class#MainUI#0" expanded="false" />
-            <element signature="method#blockDrop#0;class#MainUI#0" expanded="false" />
-            <element signature="method#frozen#0;class#MainUI#0" expanded="false" />
-            <element signature="method#refreshTargetBlock#0;class#MainUI#0" expanded="false" />
-            <element signature="method#fuckRow#0;class#MainUI#0" expanded="false" />
-            <element signature="method#isFullRow#0;class#MainUI#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/entities/GameState.java" />
-    <entry file="file://$PROJECT_DIR$/src/entities/Block.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="13" column="37" lean-forward="false" selection-start-line="13" selection-start-column="37" selection-end-line="13" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/utils/CloneUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="4" column="21" lean-forward="false" selection-start-line="4" selection-start-column="21" selection-end-line="4" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/utils/Constants.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="38">
-          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ui/MainUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#moveTargetBlock#0;class#MainUI#0" expanded="false" />
-            <element signature="class#KeyAd#0;class#MainUI#0" expanded="false" />
-            <element signature="method#mouseClicked#0;class#MouseAd#0;class#MainUI#0" expanded="false" />
-            <element signature="class#HB#0;class#MainUI#0" expanded="false" />
-            <element signature="method#drawCountDown#0;class#HB#0;class#MainUI#0" expanded="false" />
-            <element signature="method#drawNextBlock#0;class#HB#0;class#MainUI#0" expanded="false" />
-            <element signature="method#drawTargetBlock#0;class#HB#0;class#MainUI#0" expanded="false" />
-            <element signature="method#drawMap#0;class#HB#0;class#MainUI#0" expanded="false" />
-            <element signature="method#drawBlock#0;class#HB#0;class#MainUI#0" expanded="false" />
-            <element signature="method#main#0;class#MainUI#0" expanded="false" />
-            <element signature="method#blockDrop#0;class#MainUI#0" expanded="false" />
-            <element signature="method#frozen#0;class#MainUI#0" expanded="false" />
-            <element signature="method#refreshTargetBlock#0;class#MainUI#0" expanded="false" />
-            <element signature="method#fuckRow#0;class#MainUI#0" expanded="false" />
-            <element signature="method#isFullRow#0;class#MainUI#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/entities/GameState.java" />
-    <entry file="file://$PROJECT_DIR$/src/entities/Block.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="13" column="37" lean-forward="false" selection-start-line="13" selection-start-column="37" selection-end-line="13" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/utils/CloneUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="4" column="21" lean-forward="false" selection-start-line="4" selection-start-column="21" selection-end-line="4" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/utils/Constants.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="38">
-          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ui/MainUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#moveTargetBlock#0;class#MainUI#0" expanded="false" />
-            <element signature="class#KeyAd#0;class#MainUI#0" expanded="false" />
-            <element signature="method#mouseClicked#0;class#MouseAd#0;class#MainUI#0" expanded="false" />
-            <element signature="class#HB#0;class#MainUI#0" expanded="false" />
-            <element signature="method#drawCountDown#0;class#HB#0;class#MainUI#0" expanded="false" />
-            <element signature="method#drawNextBlock#0;class#HB#0;class#MainUI#0" expanded="false" />
-            <element signature="method#drawTargetBlock#0;class#HB#0;class#MainUI#0" expanded="false" />
-            <element signature="method#drawMap#0;class#HB#0;class#MainUI#0" expanded="false" />
-            <element signature="method#drawBlock#0;class#HB#0;class#MainUI#0" expanded="false" />
-            <element signature="method#main#0;class#MainUI#0" expanded="false" />
-            <element signature="method#blockDrop#0;class#MainUI#0" expanded="false" />
-            <element signature="method#frozen#0;class#MainUI#0" expanded="false" />
-            <element signature="method#refreshTargetBlock#0;class#MainUI#0" expanded="false" />
-            <element signature="method#fuckRow#0;class#MainUI#0" expanded="false" />
             <element signature="method#isFullRow#0;class#MainUI#0" expanded="false" />
           </folding>
         </state>
@@ -1109,16 +1093,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/utils/Fac.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="437">
-          <caret line="23" column="37" lean-forward="true" selection-start-line="23" selection-start-column="37" selection-end-line="23" selection-end-column="37" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_112/src.zip!/javax/swing/JComponent.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="179">
@@ -1173,7 +1147,7 @@
     <entry file="file://$PROJECT_DIR$/src/entities/GameImage.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="266">
-          <caret line="21" column="14" lean-forward="true" selection-start-line="21" selection-start-column="14" selection-end-line="21" selection-end-column="14" />
+          <caret line="21" column="14" lean-forward="false" selection-start-line="21" selection-start-column="14" selection-end-line="21" selection-end-column="14" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1188,24 +1162,94 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_112/src.zip!/java/util/Hashtable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="418" column="17" lean-forward="false" selection-start-line="418" selection-start-column="17" selection-end-line="418" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_112/src.zip!/java/util/Properties.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="165" column="17" lean-forward="false" selection-start-line="165" selection-start-column="17" selection-end-line="165" selection-end-column="17" />
+          <folding>
+            <element signature="e#5711#5712#0" expanded="false" />
+            <element signature="e#5749#5750#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/conf/recored.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/Fac.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="70" column="51" lean-forward="false" selection-start-line="70" selection-start-column="51" selection-end-line="70" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/entities/Block.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="460">
-          <caret line="119" column="67" lean-forward="false" selection-start-line="119" selection-start-column="67" selection-end-line="119" selection-end-column="67" />
+        <state relative-caret-position="95">
+          <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/entities/Save.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="361">
+          <caret line="19" column="29" lean-forward="false" selection-start-line="19" selection-start-column="29" selection-end-line="19" selection-end-column="29" />
+          <folding>
+            <element signature="e#556#557#0" expanded="true" />
+            <element signature="e#595#596#0" expanded="true" />
+            <element signature="e#625#626#0" expanded="true" />
+            <element signature="e#656#657#0" expanded="true" />
+            <element signature="e#684#685#0" expanded="true" />
+            <element signature="e#725#726#0" expanded="true" />
+            <element signature="e#759#760#0" expanded="true" />
+            <element signature="e#796#797#0" expanded="true" />
+            <element signature="e#830#831#0" expanded="true" />
+            <element signature="e#883#884#0" expanded="true" />
+            <element signature="e#929#930#0" expanded="true" />
+            <element signature="e#964#965#0" expanded="true" />
+            <element signature="e#996#997#0" expanded="true" />
+            <element signature="e#1045#1046#0" expanded="true" />
+            <element signature="e#1087#1088#0" expanded="true" />
+            <element signature="e#1116#1117#0" expanded="true" />
+            <element signature="e#1144#1145#0" expanded="true" />
+            <element signature="e#1183#1184#0" expanded="true" />
+            <element signature="e#1217#1218#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/conf/record">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ui/MainUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="143" column="60" lean-forward="false" selection-start-line="143" selection-start-column="60" selection-end-line="143" selection-end-column="60" />
+        <state relative-caret-position="399">
+          <caret line="21" column="58" lean-forward="true" selection-start-line="21" selection-start-column="58" selection-end-line="21" selection-end-column="58" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#moveTargetBlock#0;class#MainUI#0" expanded="false" />
-            <element signature="class#KeyAd#0;class#MainUI#0" expanded="false" />
-            <element signature="method#mouseClicked#0;class#MouseAd#0;class#MainUI#0" expanded="false" />
-            <element signature="class#HB#0;class#MainUI#0" expanded="false" />
+            <element signature="class#MouseAd#0;class#MainUI#0" expanded="false" />
+            <element signature="method#mouseMoved#0;class#MouseAd#0;class#MainUI#0" expanded="false" />
             <element signature="method#drawCountDown#0;class#HB#0;class#MainUI#0" expanded="false" />
             <element signature="method#drawNextBlock#0;class#HB#0;class#MainUI#0" expanded="false" />
             <element signature="method#drawTargetBlock#0;class#HB#0;class#MainUI#0" expanded="false" />
@@ -1213,9 +1257,7 @@
             <element signature="method#drawBlock#0;class#HB#0;class#MainUI#0" expanded="false" />
             <element signature="method#main#0;class#MainUI#0" expanded="false" />
             <element signature="method#blockDrop#0;class#MainUI#0" expanded="false" />
-            <element signature="method#frozen#0;class#MainUI#0" expanded="false" />
             <element signature="method#refreshTargetBlock#0;class#MainUI#0" expanded="false" />
-            <element signature="method#fuckRow#0;class#MainUI#0" expanded="false" />
             <element signature="method#isFullRow#0;class#MainUI#0" expanded="false" />
           </folding>
         </state>
