@@ -19,7 +19,7 @@ public class Fac {
         int index = r.nextInt(7) + 1;
         switch (index) {
             case 1:
-                return new I();
+                return new Z();
             case 2:
                 return new J();
             case 3:
@@ -31,7 +31,7 @@ public class Fac {
             case 6:
                 return new T();
             default:
-                return new Z();
+                return new I();
         }
     }
 
