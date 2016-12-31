@@ -2,6 +2,7 @@ package ui;
 
 import entities.*;
 import enums.GameState;
+import sun.security.util.Length;
 import utils.CloneUtils;
 import utils.Constants;
 import utils.Fac;
@@ -23,14 +24,14 @@ public class MainUI extends JFrame implements Runnable {
     private Block nextBlock;                        //下一个方块
     private GameState state = GameState.WELCOME;    //游戏状态
     private GameFont welcomeFont =
-            new GameFont("俄罗斯方块", Constants.WINDOW_WIDTH / 4, -Constants.BLOCK_SIZE, Constants.BLOCK_SIZE);     //欢迎界面游戏标题
-    private GameImage welcomeImage1 =
+            new GameFont("俄罗斯方块", Constants.WINDOW_WIDTH / 3, -Constants.BLOCK_SIZE, Constants.BLOCK_SIZE);     //欢迎界面游戏标题
+    private GameImage startImage =
             new GameImage("btn_play.png", (Constants.WINDOW_WIDTH - Medias.getImage("btn_play.png").getWidth()) / 2, welcomeFont.getY() + Constants.BLOCK_SIZE);     //欢迎界面图片按钮
-    private GameImage welcomeImage2 =
+    private GameImage exitImage =
             new GameImage("exit.png", Constants.WINDOW_WIDTH - 100, Constants.WINDOW_HEIGHT - 100);
     private GameFont countDown = new GameFont("3", Constants.WINDOW_WIDTH / 2, Constants.WINDOW_HEIGHT / 2, Constants.BLOCK_SIZE * 3);
-    private int countDownInterval = 0;
-
+    private GameImage defeate = new GameImage("defeat1.png", 100, -Medias.getImage("defeat.png").getHeight());
+    private GameImage restartImage = new GameImage("restart.png", 100, Constants.WINDOW_HEIGHT - 100);
 
     public MainUI() {
         setSize(Constants.WINDOW_WIDTH, Constants.WINDOW_HEIGHT);
@@ -90,10 +91,10 @@ public class MainUI extends JFrame implements Runnable {
                 }
             }
 
-            if(e.getKeyCode() == KeyEvent.VK_1){
-                if(state == state.GAMING){
+            if (e.getKeyCode() == KeyEvent.VK_1) {
+                if (state == state.GAMING) {
                     state = GameState.PAUSE;
-                }else if (state == GameState.PAUSE){
+                } else if (state == GameState.PAUSE) {
                     state = GameState.GAMING;
                 }
             }
@@ -105,9 +106,23 @@ public class MainUI extends JFrame implements Runnable {
         @Override
         public void mouseClicked(MouseEvent e) {
             if (state == GameState.GAME_SELECT) {
-                if (welcomeImage1.getRectangle().contains(e.getX(), e.getY())) {
+                if (startImage.getRectangle().contains(e.getX(), e.getY())) {
                     state = GameState.COUNTDOWN;
-                } else if (welcomeImage2.getRectangle().contains(e.getX(), e.getY())) {
+                } else if (exitImage.getRectangle().contains(e.getX(), e.getY())) {
+                    System.exit(0);
+                }
+            } else if (state == GameState.OVER) {
+                if (restartImage.getRectangle().contains(e.getX(), e.getY())) {
+                    for (int i = 0; i < map.length; i++) {
+                        for (int j = 0; j < map[i].length; j++) {
+                            map[i][j] = 0;
+                        }
+                    }
+                    block = Fac.getBlock();
+                    nextBlock = Fac.getBlock();
+                    refreshTargetBlock();
+                    state = GameState.GAMING;
+                } else if (exitImage.getRectangle().contains(e.getX(), e.getY())) {
                     System.exit(0);
                 }
             }
@@ -116,13 +131,13 @@ public class MainUI extends JFrame implements Runnable {
         @Override
         public void mouseMoved(MouseEvent e) {
             if (state == GameState.GAME_SELECT) {
-                if (welcomeImage1.getRectangle().contains(e.getX(), e.getY())) {
-                    welcomeImage1.setImage(Medias.getImage("btn_play_click.png"));
-                } else if (welcomeImage2.getRectangle().contains(e.getX(), e.getY())) {
-                    welcomeImage2.setImage(Medias.getImage("exit_click.png"));
+                if (startImage.getRectangle().contains(e.getX(), e.getY())) {
+                    startImage.setImage(Medias.getImage("btn_play_click.png"));
+                } else if (exitImage.getRectangle().contains(e.getX(), e.getY())) {
+                    exitImage.setImage(Medias.getImage("exit_click.png"));
                 } else {
-                    welcomeImage1.setImage(Medias.getImage("btn_play.png"));
-                    welcomeImage2.setImage(Medias.getImage("exit.png"));
+                    startImage.setImage(Medias.getImage("btn_play.png"));
+                    exitImage.setImage(Medias.getImage("exit.png"));
                 }
             }
 
@@ -146,13 +161,22 @@ public class MainUI extends JFrame implements Runnable {
                 drawCountDown(g);
             } else if (state == GameState.WELCOME) {
                 drawWelcome(g);
-            }else if(state == GameState.PAUSE){
+            } else if (state == GameState.PAUSE) {
                 drawMap(g);
                 drawBlock(g);
                 drawTargetBlock(g);
                 drawNextBlock(g);
+            } else if (state == GameState.OVER) {
+                g.drawImage(Medias.getImage("bg.jpg"), 0, 0, Constants.WINDOW_WIDTH, Constants.WINDOW_HEIGHT, this);
+                drawGameImage(g, defeate);
+                drawGameImage(g, restartImage);
+                drawGameImage(g, exitImage);
             }
 
+        }
+
+        private void drawGameImage(Graphics g, GameImage gameImage) {
+            g.drawImage(gameImage.getImage(), gameImage.getX(), gameImage.getY(), this);
         }
 
         private void drawCountDown(Graphics g) {
@@ -165,10 +189,10 @@ public class MainUI extends JFrame implements Runnable {
 
         private void drawWelcome(Graphics g) {
             g.drawImage(Medias.getImage("bg.jpg"), 0, 0, Constants.WINDOW_WIDTH, Constants.WINDOW_HEIGHT, this);
-            g.setFont(new Font("微软雅黑", Font.ITALIC, welcomeFont.getSize()));
+            g.setFont(new Font("微软雅黑", Font.BOLD, welcomeFont.getSize()));
             g.drawString(welcomeFont.getText(), welcomeFont.getX(), welcomeFont.getY());
-            g.drawImage(welcomeImage1.getImage(), welcomeImage1.getX(), welcomeImage1.getY(), this);
-            g.drawImage(welcomeImage2.getImage(), welcomeImage2.getX(), welcomeImage2.getY(), this);
+            g.drawImage(startImage.getImage(), startImage.getX(), startImage.getY(), this);
+            g.drawImage(exitImage.getImage(), exitImage.getX(), exitImage.getY(), this);
         }
 
         private void drawNextBlock(Graphics g) {
@@ -254,8 +278,7 @@ public class MainUI extends JFrame implements Runnable {
         while (true) {
             if (state == GameState.WELCOME) {
                 welcomeFont.moveDown();
-                welcomeImage1.moveDown();
-
+                startImage.moveDown();
                 if (welcomeFont.getY() > 5 * Constants.BLOCK_SIZE) {
                     state = GameState.GAME_SELECT;
                 }
@@ -270,9 +293,11 @@ public class MainUI extends JFrame implements Runnable {
                 if ("0".equals(countDown.getText())) {
                     state = GameState.GAMING;
                 }
-            } else {
-                if (state == GameState.GAMING) {
-                    blockDrop();
+            } else if (state == GameState.GAMING) {
+                blockDrop();
+            } else if (state == GameState.OVER) {
+                if (defeate.getY() <= 100) {
+                    defeate.moveDown();
                 }
             }
 
@@ -312,8 +337,8 @@ public class MainUI extends JFrame implements Runnable {
             fuckRow(index);
         }
         refreshTargetBlock();
-        for(int i = 0 ; i < Constants.COLUMN ; i ++){
-            if(map[0][i] != 0){
+        for (int i = 0; i < Constants.COLUMN; i++) {
+            if (map[0][i] != 0) {
                 state = GameState.OVER;
             }
         }

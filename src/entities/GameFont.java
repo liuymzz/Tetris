@@ -16,7 +16,7 @@ public class GameFont {
     }
 
     public void moveDown(){
-        y ++;
+        y += 2;
     }
 
     public void moveUp(){

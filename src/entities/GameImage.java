@@ -19,7 +19,7 @@ public class GameImage {
     }
 
     public void moveDown(){
-        y ++;
+        y += 2;
     }
 
     public void moveUp(){
