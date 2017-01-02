@@ -120,9 +120,7 @@ public class MainUI extends JFrame implements Runnable {
                     nextBlock = save.getNextBlock();
                     score = save.getScore();
                 }
-            } catch (IOException e) {
-                e.printStackTrace();
-            } catch (ClassNotFoundException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }
