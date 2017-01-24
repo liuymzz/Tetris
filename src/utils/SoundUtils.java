@@ -13,12 +13,13 @@ import javax.sound.sampled.SourceDataLine;
 
 public class SoundUtils {
     public static void Play(final File  f,final boolean loop){
-        new Thread(){
-            @Override
-            public void run() {
-                SoundUtils.playMusic(loop,f );
-            }
-        }.start();
+            new Thread(){
+                @Override
+                public void run() {
+                    SoundUtils.playMusic(loop,f );
+                }
+            }.start();
+
     }
     public static void playMusic(boolean loop,File file) {
         byte[] audioData = new byte[1024];

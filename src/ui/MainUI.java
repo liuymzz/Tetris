@@ -27,6 +27,7 @@ public class MainUI extends JFrame implements Runnable {
     private GameImage exitImage =
             new GameImage("exit.png", Constants.WINDOW_WIDTH - 100, Constants.WINDOW_HEIGHT - 100);
     private GameFont countDown = new GameFont("3", Constants.WINDOW_WIDTH / 2, Constants.WINDOW_HEIGHT / 2, Constants.BLOCK_SIZE * 3);
+    private boolean isCountDowning = false;         //是否处于倒计时状态，播放倒计时声音会用到
     private GameImage defeate = new GameImage("defeat1.png", 100, -Medias.getImage("defeat.png").getHeight());
     private GameImage restartImage = new GameImage("restart.png", 100, Constants.WINDOW_HEIGHT - 100);
     private int score = 0;
@@ -152,7 +153,6 @@ public class MainUI extends JFrame implements Runnable {
             if (state == GameState.GAME_SELECT) {
                 if (startImage.getRectangle().contains(e.getX(), e.getY())) {
                     state = GameState.COUNTDOWN;
-                    SoundUtils.Play(Medias.getAudio("countdown.wav"), false);
                 } else if (exitImage.getRectangle().contains(e.getX(), e.getY())) {
                     System.exit(0);
                 }
@@ -166,7 +166,7 @@ public class MainUI extends JFrame implements Runnable {
                     block = Fac.getBlock();
                     nextBlock = Fac.getBlock();
                     refreshTargetBlock();
-                    state = GameState.GAMING;
+                    state = GameState.COUNTDOWN;
                     score = 0;
                 } else if (exitImage.getRectangle().contains(e.getX(), e.getY())) {
                     System.exit(0);
@@ -344,12 +344,19 @@ public class MainUI extends JFrame implements Runnable {
             } else if (state == GameState.GAME_SELECT) {
 
             } else if (state == GameState.COUNTDOWN) {
+                if(isCountDowning == false){
+                    SoundUtils.Play(Medias.getAudio("countdown.wav"),false);
+                    isCountDowning = true;
+                }
                 countDown.setSize(countDown.getSize() - 1);
                 if (countDown.getSize() <= 0) {
                     countDown.setText(Integer.parseInt(countDown.getText()) - 1 + "");
                     countDown.setSize(Constants.BLOCK_SIZE * 3);
                 }
                 if ("0".equals(countDown.getText())) {
+                    countDown.setText("3");
+                    countDown.setSize(Constants.BLOCK_SIZE * 3);
+                    isCountDowning = false;
                     state = GameState.GAMING;
                 }
             } else if (state == GameState.GAMING) {
@@ -362,7 +369,7 @@ public class MainUI extends JFrame implements Runnable {
 
             hb.repaint();
             try {
-                Thread.sleep(10);
+                Thread.sleep(9);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -389,14 +396,7 @@ public class MainUI extends JFrame implements Runnable {
                 }
             }
         }
-        block = nextBlock;
-        refreshTargetBlock();
-        nextBlock = Fac.getBlock();
-        int index;
-        while ((index = isFullRow()) != -1) {
-            fuckRow(index);
-        }
-        refreshTargetBlock();
+
         for (int i = 0; i < Constants.COLUMN; i++) {
             if (map[0][i] != 0) {
                 int record = Fac.getMaxScore();
@@ -408,6 +408,16 @@ public class MainUI extends JFrame implements Runnable {
                 break;
             }
         }
+
+        block = nextBlock;
+        refreshTargetBlock();
+        nextBlock = Fac.getBlock();
+        int index;
+        while ((index = isFullRow()) != -1) {
+            fuckRow(index);
+        }
+        refreshTargetBlock();
+
     }
 
     //当前方块的状态改变后需要刷新targetBlock
