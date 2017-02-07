@@ -174,21 +174,12 @@ public class MainUI extends JFrame implements Runnable {
             }
 
             if (state == GameState.OVER) {
-                if (restartImage.getRectangle().contains(e.getX(), e.getY())) {
-                    for (int i = 0; i < map.length; i++) {
-                        for (int j = 0; j < map[i].length; j++) {
-                            map[i][j] = 0;
-                        }
-                    }
-                    block = Fac.getBlock();
-                    nextBlock = Fac.getBlock();
-                    refreshTargetBlock();
-                    state = GameState.COUNTDOWN;
-                    score = 0;
-                } else if (exitImage.getRectangle().contains(e.getX(), e.getY())) {
-                    System.exit(0);
-                }
+                pauseAndOverMenuMouseClickOp(e);
+                return;
+            }
 
+            if(state == GameState.PAUSE){
+                pauseAndOverMenuMouseClickOp(e);
                 return;
             }
 
@@ -216,6 +207,23 @@ public class MainUI extends JFrame implements Runnable {
             return;
         }
 
+        private void pauseAndOverMenuMouseClickOp(MouseEvent e) {
+            if (restartImage.getRectangle().contains(e.getX(), e.getY())) {
+                for (int i = 0; i < map.length; i++) {
+                    for (int j = 0; j < map[i].length; j++) {
+                        map[i][j] = 0;
+                    }
+                }
+                block = Fac.getBlock();
+                nextBlock = Fac.getBlock();
+                refreshTargetBlock();
+                state = GameState.COUNTDOWN;
+                score = 0;
+            } else if (exitImage.getRectangle().contains(e.getX(), e.getY())) {
+                System.exit(0);
+            }
+        }
+
         @Override
         public void mouseMoved(MouseEvent e) {
             if (state == GameState.GAME_SELECT) {
@@ -227,15 +235,29 @@ public class MainUI extends JFrame implements Runnable {
                     startImage.setImage(Medias.getImage("btn_play.png"));
                     exitImage.setImage(Medias.getImage("exit.png"));
                 }
-            } else if (state == GameState.OVER) {
-                if (exitImage.getRectangle().contains(e.getX(), e.getY())) {
-                    exitImage.setImage(Medias.getImage("exit_click.png"));
-                } else {
-                    exitImage.setImage(Medias.getImage("exit.png"));
-                }
+
+                return;
+            }
+
+            if (state == GameState.OVER) {
+                pauseAndOverMenuMouseMotionOp(e);
+                return;
+            }
+
+            if(state == GameState.PAUSE){
+                pauseAndOverMenuMouseMotionOp(e);
+                return;
             }
 
             hb.repaint();
+        }
+
+        private void pauseAndOverMenuMouseMotionOp(MouseEvent e) {
+            if (exitImage.getRectangle().contains(e.getX(), e.getY())) {
+                exitImage.setImage(Medias.getImage("exit_click.png"));
+            } else {
+                exitImage.setImage(Medias.getImage("exit.png"));
+            }
         }
 
     }
@@ -249,6 +271,7 @@ public class MainUI extends JFrame implements Runnable {
                 g.setColor(Color.white);
                 g.setFont(new Font("微软雅黑", Font.BOLD, Constants.BLOCK_SIZE / 2));
                 g.drawString("您消除了" + score + "行", 11 * Constants.BLOCK_SIZE, 7 * Constants.BLOCK_SIZE);
+                g.drawString("道具一可用次数："+prop_1_Times,11 * Constants.BLOCK_SIZE,8 * Constants.BLOCK_SIZE);
             } else if (state == GameState.GAME_SELECT) {
                 drawWelcome(g);
             } else if (state == GameState.COUNTDOWN) {
@@ -257,10 +280,16 @@ public class MainUI extends JFrame implements Runnable {
                 drawWelcome(g);
             } else if (state == GameState.PAUSE) {
                 drawGaming(g);
+                g.drawImage(Medias.getImage("bg.jpg"), 0, 0, Constants.WINDOW_WIDTH, Constants.WINDOW_HEIGHT, this);
+                drawGameImage(g, restartImage);
+                drawGameImage(g, exitImage);
             } else if (state == GameState.OVER) {
                 drawOver(g);
             }else if(state == GameState.PROP_addBlock){
                 drawGaming(g);
+                g.setColor(Color.white);
+                g.setFont(new Font("微软雅黑", Font.BOLD, Constants.BLOCK_SIZE / 2));
+                g.drawString("道具一可用次数："+prop_1_Times,11 * Constants.BLOCK_SIZE,8 * Constants.BLOCK_SIZE);
             }
 
         }

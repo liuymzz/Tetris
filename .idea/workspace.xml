@@ -2,9 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="342a5e29-4514-470b-b903-b88fe3a3e6d2" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/conf/recored.properties" afterPath="$PROJECT_DIR$/conf/recored.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/enums/GameState.java" afterPath="$PROJECT_DIR$/src/enums/GameState.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ui/MainUI.java" afterPath="$PROJECT_DIR$/src/ui/MainUI.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -24,17 +21,22 @@
       <file leaf-file-name="MainUI.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/ui/MainUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="378">
-              <caret line="473" column="23" lean-forward="false" selection-start-line="473" selection-start-column="23" selection-end-line="473" selection-end-column="23" />
+            <state relative-caret-position="253">
+              <caret line="283" column="43" lean-forward="false" selection-start-line="283" selection-start-column="43" selection-end-line="283" selection-end-column="43" />
               <folding>
                 <element signature="method#MainUI#0;class#MainUI#0" expanded="false" />
                 <element signature="method#moveTargetBlock#0;class#MainUI#0" expanded="false" />
+                <element signature="class#KeyAd#0;class#MainUI#0" expanded="false" />
+                <element signature="method#keyPressed#0;class#KeyAd#0;class#MainUI#0" expanded="false" />
                 <element signature="method#load#0;class#KeyAd#0;class#MainUI#0" expanded="false" />
                 <element signature="method#save#0;class#KeyAd#0;class#MainUI#0" expanded="false" />
                 <element signature="class#MouseAd#0;class#MainUI#0" expanded="false" />
                 <element signature="method#mouseClicked#0;class#MouseAd#0;class#MainUI#0" expanded="false" />
+                <element signature="method#pauseAndOverMenuMouseClickOp#0;class#MouseAd#0;class#MainUI#0" expanded="false" />
                 <element signature="method#mouseMoved#0;class#MouseAd#0;class#MainUI#0" expanded="false" />
+                <element signature="method#pauseAndOverMenuMouseMotionOp#0;class#MouseAd#0;class#MainUI#0" expanded="false" />
                 <element signature="method#drawOver#0;class#HB#0;class#MainUI#0" expanded="false" />
+                <element signature="method#drawGameImage#0;class#HB#0;class#MainUI#0" expanded="false" />
                 <element signature="method#drawGaming#0;class#HB#0;class#MainUI#0" expanded="false" />
                 <element signature="method#drawCountDown#0;class#HB#0;class#MainUI#0" expanded="false" />
                 <element signature="method#drawWelcome#0;class#HB#0;class#MainUI#0" expanded="false" />
@@ -45,12 +47,11 @@
                 <element signature="method#main#0;class#MainUI#0" expanded="false" />
                 <element signature="method#run#0;class#MainUI#0" expanded="false" />
                 <element signature="method#blockDrop#0;class#MainUI#0" expanded="false" />
+                <element signature="method#frozen#0;class#MainUI#0" expanded="false" />
+                <element signature="method#eliminateRow#0;class#MainUI#0" expanded="false" />
                 <element signature="method#refreshTargetBlock#0;class#MainUI#0" expanded="false" />
                 <element signature="method#fuckRow#0;class#MainUI#0" expanded="false" />
                 <element signature="method#isFullRow#0;class#MainUI#0" expanded="false" />
-                <marker date="1486441629764" expanded="false" signature="9121:15494" ph="{...}" />
-                <marker date="1486441629764" expanded="false" signature="9191:10112" ph="{...}" />
-                <marker date="1486441629764" expanded="false" signature="10833:10933" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -183,6 +184,20 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="enums" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Tetris" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Tetris" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="medias" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -636,12 +651,12 @@
       <workItem from="1486367280708" duration="603000" />
       <workItem from="1486369581943" duration="1188000" />
       <workItem from="1486390132769" duration="274000" />
-      <workItem from="1486436891278" duration="4849000" />
+      <workItem from="1486436891278" duration="6645000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="13440000" />
+    <option name="totallyTimeSpent" value="15236000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -707,12 +722,17 @@
           <folding>
             <element signature="method#MainUI#0;class#MainUI#0" expanded="false" />
             <element signature="method#moveTargetBlock#0;class#MainUI#0" expanded="false" />
+            <element signature="class#KeyAd#0;class#MainUI#0" expanded="false" />
+            <element signature="method#keyPressed#0;class#KeyAd#0;class#MainUI#0" expanded="false" />
             <element signature="method#load#0;class#KeyAd#0;class#MainUI#0" expanded="false" />
             <element signature="method#save#0;class#KeyAd#0;class#MainUI#0" expanded="false" />
             <element signature="class#MouseAd#0;class#MainUI#0" expanded="false" />
             <element signature="method#mouseClicked#0;class#MouseAd#0;class#MainUI#0" expanded="false" />
+            <element signature="method#pauseAndOverMenuMouseClickOp#0;class#MouseAd#0;class#MainUI#0" expanded="false" />
             <element signature="method#mouseMoved#0;class#MouseAd#0;class#MainUI#0" expanded="false" />
+            <element signature="method#pauseAndOverMenuMouseMotionOp#0;class#MouseAd#0;class#MainUI#0" expanded="false" />
             <element signature="method#drawOver#0;class#HB#0;class#MainUI#0" expanded="false" />
+            <element signature="method#drawGameImage#0;class#HB#0;class#MainUI#0" expanded="false" />
             <element signature="method#drawGaming#0;class#HB#0;class#MainUI#0" expanded="false" />
             <element signature="method#drawCountDown#0;class#HB#0;class#MainUI#0" expanded="false" />
             <element signature="method#drawWelcome#0;class#HB#0;class#MainUI#0" expanded="false" />
@@ -723,12 +743,11 @@
             <element signature="method#main#0;class#MainUI#0" expanded="false" />
             <element signature="method#run#0;class#MainUI#0" expanded="false" />
             <element signature="method#blockDrop#0;class#MainUI#0" expanded="false" />
+            <element signature="method#frozen#0;class#MainUI#0" expanded="false" />
+            <element signature="method#eliminateRow#0;class#MainUI#0" expanded="false" />
             <element signature="method#refreshTargetBlock#0;class#MainUI#0" expanded="false" />
             <element signature="method#fuckRow#0;class#MainUI#0" expanded="false" />
             <element signature="method#isFullRow#0;class#MainUI#0" expanded="false" />
-            <marker date="1486441629764" expanded="false" signature="9121:15494" ph="{...}" />
-            <marker date="1486441629764" expanded="false" signature="9191:10112" ph="{...}" />
-            <marker date="1486441629764" expanded="false" signature="10833:10933" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -748,12 +767,17 @@
           <folding>
             <element signature="method#MainUI#0;class#MainUI#0" expanded="false" />
             <element signature="method#moveTargetBlock#0;class#MainUI#0" expanded="false" />
+            <element signature="class#KeyAd#0;class#MainUI#0" expanded="false" />
+            <element signature="method#keyPressed#0;class#KeyAd#0;class#MainUI#0" expanded="false" />
             <element signature="method#load#0;class#KeyAd#0;class#MainUI#0" expanded="false" />
             <element signature="method#save#0;class#KeyAd#0;class#MainUI#0" expanded="false" />
             <element signature="class#MouseAd#0;class#MainUI#0" expanded="false" />
             <element signature="method#mouseClicked#0;class#MouseAd#0;class#MainUI#0" expanded="false" />
+            <element signature="method#pauseAndOverMenuMouseClickOp#0;class#MouseAd#0;class#MainUI#0" expanded="false" />
             <element signature="method#mouseMoved#0;class#MouseAd#0;class#MainUI#0" expanded="false" />
+            <element signature="method#pauseAndOverMenuMouseMotionOp#0;class#MouseAd#0;class#MainUI#0" expanded="false" />
             <element signature="method#drawOver#0;class#HB#0;class#MainUI#0" expanded="false" />
+            <element signature="method#drawGameImage#0;class#HB#0;class#MainUI#0" expanded="false" />
             <element signature="method#drawGaming#0;class#HB#0;class#MainUI#0" expanded="false" />
             <element signature="method#drawCountDown#0;class#HB#0;class#MainUI#0" expanded="false" />
             <element signature="method#drawWelcome#0;class#HB#0;class#MainUI#0" expanded="false" />
@@ -764,12 +788,11 @@
             <element signature="method#main#0;class#MainUI#0" expanded="false" />
             <element signature="method#run#0;class#MainUI#0" expanded="false" />
             <element signature="method#blockDrop#0;class#MainUI#0" expanded="false" />
+            <element signature="method#frozen#0;class#MainUI#0" expanded="false" />
+            <element signature="method#eliminateRow#0;class#MainUI#0" expanded="false" />
             <element signature="method#refreshTargetBlock#0;class#MainUI#0" expanded="false" />
             <element signature="method#fuckRow#0;class#MainUI#0" expanded="false" />
             <element signature="method#isFullRow#0;class#MainUI#0" expanded="false" />
-            <marker date="1486441629764" expanded="false" signature="9121:15494" ph="{...}" />
-            <marker date="1486441629764" expanded="false" signature="9191:10112" ph="{...}" />
-            <marker date="1486441629764" expanded="false" signature="10833:10933" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -789,12 +812,17 @@
           <folding>
             <element signature="method#MainUI#0;class#MainUI#0" expanded="false" />
             <element signature="method#moveTargetBlock#0;class#MainUI#0" expanded="false" />
+            <element signature="class#KeyAd#0;class#MainUI#0" expanded="false" />
+            <element signature="method#keyPressed#0;class#KeyAd#0;class#MainUI#0" expanded="false" />
             <element signature="method#load#0;class#KeyAd#0;class#MainUI#0" expanded="false" />
             <element signature="method#save#0;class#KeyAd#0;class#MainUI#0" expanded="false" />
             <element signature="class#MouseAd#0;class#MainUI#0" expanded="false" />
             <element signature="method#mouseClicked#0;class#MouseAd#0;class#MainUI#0" expanded="false" />
+            <element signature="method#pauseAndOverMenuMouseClickOp#0;class#MouseAd#0;class#MainUI#0" expanded="false" />
             <element signature="method#mouseMoved#0;class#MouseAd#0;class#MainUI#0" expanded="false" />
+            <element signature="method#pauseAndOverMenuMouseMotionOp#0;class#MouseAd#0;class#MainUI#0" expanded="false" />
             <element signature="method#drawOver#0;class#HB#0;class#MainUI#0" expanded="false" />
+            <element signature="method#drawGameImage#0;class#HB#0;class#MainUI#0" expanded="false" />
             <element signature="method#drawGaming#0;class#HB#0;class#MainUI#0" expanded="false" />
             <element signature="method#drawCountDown#0;class#HB#0;class#MainUI#0" expanded="false" />
             <element signature="method#drawWelcome#0;class#HB#0;class#MainUI#0" expanded="false" />
@@ -805,12 +833,11 @@
             <element signature="method#main#0;class#MainUI#0" expanded="false" />
             <element signature="method#run#0;class#MainUI#0" expanded="false" />
             <element signature="method#blockDrop#0;class#MainUI#0" expanded="false" />
+            <element signature="method#frozen#0;class#MainUI#0" expanded="false" />
+            <element signature="method#eliminateRow#0;class#MainUI#0" expanded="false" />
             <element signature="method#refreshTargetBlock#0;class#MainUI#0" expanded="false" />
             <element signature="method#fuckRow#0;class#MainUI#0" expanded="false" />
             <element signature="method#isFullRow#0;class#MainUI#0" expanded="false" />
-            <marker date="1486441629764" expanded="false" signature="9121:15494" ph="{...}" />
-            <marker date="1486441629764" expanded="false" signature="9191:10112" ph="{...}" />
-            <marker date="1486441629764" expanded="false" signature="10833:10933" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -830,12 +857,17 @@
           <folding>
             <element signature="method#MainUI#0;class#MainUI#0" expanded="false" />
             <element signature="method#moveTargetBlock#0;class#MainUI#0" expanded="false" />
+            <element signature="class#KeyAd#0;class#MainUI#0" expanded="false" />
+            <element signature="method#keyPressed#0;class#KeyAd#0;class#MainUI#0" expanded="false" />
             <element signature="method#load#0;class#KeyAd#0;class#MainUI#0" expanded="false" />
             <element signature="method#save#0;class#KeyAd#0;class#MainUI#0" expanded="false" />
             <element signature="class#MouseAd#0;class#MainUI#0" expanded="false" />
             <element signature="method#mouseClicked#0;class#MouseAd#0;class#MainUI#0" expanded="false" />
+            <element signature="method#pauseAndOverMenuMouseClickOp#0;class#MouseAd#0;class#MainUI#0" expanded="false" />
             <element signature="method#mouseMoved#0;class#MouseAd#0;class#MainUI#0" expanded="false" />
+            <element signature="method#pauseAndOverMenuMouseMotionOp#0;class#MouseAd#0;class#MainUI#0" expanded="false" />
             <element signature="method#drawOver#0;class#HB#0;class#MainUI#0" expanded="false" />
+            <element signature="method#drawGameImage#0;class#HB#0;class#MainUI#0" expanded="false" />
             <element signature="method#drawGaming#0;class#HB#0;class#MainUI#0" expanded="false" />
             <element signature="method#drawCountDown#0;class#HB#0;class#MainUI#0" expanded="false" />
             <element signature="method#drawWelcome#0;class#HB#0;class#MainUI#0" expanded="false" />
@@ -846,12 +878,11 @@
             <element signature="method#main#0;class#MainUI#0" expanded="false" />
             <element signature="method#run#0;class#MainUI#0" expanded="false" />
             <element signature="method#blockDrop#0;class#MainUI#0" expanded="false" />
+            <element signature="method#frozen#0;class#MainUI#0" expanded="false" />
+            <element signature="method#eliminateRow#0;class#MainUI#0" expanded="false" />
             <element signature="method#refreshTargetBlock#0;class#MainUI#0" expanded="false" />
             <element signature="method#fuckRow#0;class#MainUI#0" expanded="false" />
             <element signature="method#isFullRow#0;class#MainUI#0" expanded="false" />
-            <marker date="1486441629764" expanded="false" signature="9121:15494" ph="{...}" />
-            <marker date="1486441629764" expanded="false" signature="9191:10112" ph="{...}" />
-            <marker date="1486441629764" expanded="false" signature="10833:10933" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -871,12 +902,17 @@
           <folding>
             <element signature="method#MainUI#0;class#MainUI#0" expanded="false" />
             <element signature="method#moveTargetBlock#0;class#MainUI#0" expanded="false" />
+            <element signature="class#KeyAd#0;class#MainUI#0" expanded="false" />
+            <element signature="method#keyPressed#0;class#KeyAd#0;class#MainUI#0" expanded="false" />
             <element signature="method#load#0;class#KeyAd#0;class#MainUI#0" expanded="false" />
             <element signature="method#save#0;class#KeyAd#0;class#MainUI#0" expanded="false" />
             <element signature="class#MouseAd#0;class#MainUI#0" expanded="false" />
             <element signature="method#mouseClicked#0;class#MouseAd#0;class#MainUI#0" expanded="false" />
+            <element signature="method#pauseAndOverMenuMouseClickOp#0;class#MouseAd#0;class#MainUI#0" expanded="false" />
             <element signature="method#mouseMoved#0;class#MouseAd#0;class#MainUI#0" expanded="false" />
+            <element signature="method#pauseAndOverMenuMouseMotionOp#0;class#MouseAd#0;class#MainUI#0" expanded="false" />
             <element signature="method#drawOver#0;class#HB#0;class#MainUI#0" expanded="false" />
+            <element signature="method#drawGameImage#0;class#HB#0;class#MainUI#0" expanded="false" />
             <element signature="method#drawGaming#0;class#HB#0;class#MainUI#0" expanded="false" />
             <element signature="method#drawCountDown#0;class#HB#0;class#MainUI#0" expanded="false" />
             <element signature="method#drawWelcome#0;class#HB#0;class#MainUI#0" expanded="false" />
@@ -887,12 +923,11 @@
             <element signature="method#main#0;class#MainUI#0" expanded="false" />
             <element signature="method#run#0;class#MainUI#0" expanded="false" />
             <element signature="method#blockDrop#0;class#MainUI#0" expanded="false" />
+            <element signature="method#frozen#0;class#MainUI#0" expanded="false" />
+            <element signature="method#eliminateRow#0;class#MainUI#0" expanded="false" />
             <element signature="method#refreshTargetBlock#0;class#MainUI#0" expanded="false" />
             <element signature="method#fuckRow#0;class#MainUI#0" expanded="false" />
             <element signature="method#isFullRow#0;class#MainUI#0" expanded="false" />
-            <marker date="1486441629764" expanded="false" signature="9121:15494" ph="{...}" />
-            <marker date="1486441629764" expanded="false" signature="9191:10112" ph="{...}" />
-            <marker date="1486441629764" expanded="false" signature="10833:10933" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -912,12 +947,17 @@
           <folding>
             <element signature="method#MainUI#0;class#MainUI#0" expanded="false" />
             <element signature="method#moveTargetBlock#0;class#MainUI#0" expanded="false" />
+            <element signature="class#KeyAd#0;class#MainUI#0" expanded="false" />
+            <element signature="method#keyPressed#0;class#KeyAd#0;class#MainUI#0" expanded="false" />
             <element signature="method#load#0;class#KeyAd#0;class#MainUI#0" expanded="false" />
             <element signature="method#save#0;class#KeyAd#0;class#MainUI#0" expanded="false" />
             <element signature="class#MouseAd#0;class#MainUI#0" expanded="false" />
             <element signature="method#mouseClicked#0;class#MouseAd#0;class#MainUI#0" expanded="false" />
+            <element signature="method#pauseAndOverMenuMouseClickOp#0;class#MouseAd#0;class#MainUI#0" expanded="false" />
             <element signature="method#mouseMoved#0;class#MouseAd#0;class#MainUI#0" expanded="false" />
+            <element signature="method#pauseAndOverMenuMouseMotionOp#0;class#MouseAd#0;class#MainUI#0" expanded="false" />
             <element signature="method#drawOver#0;class#HB#0;class#MainUI#0" expanded="false" />
+            <element signature="method#drawGameImage#0;class#HB#0;class#MainUI#0" expanded="false" />
             <element signature="method#drawGaming#0;class#HB#0;class#MainUI#0" expanded="false" />
             <element signature="method#drawCountDown#0;class#HB#0;class#MainUI#0" expanded="false" />
             <element signature="method#drawWelcome#0;class#HB#0;class#MainUI#0" expanded="false" />
@@ -928,12 +968,11 @@
             <element signature="method#main#0;class#MainUI#0" expanded="false" />
             <element signature="method#run#0;class#MainUI#0" expanded="false" />
             <element signature="method#blockDrop#0;class#MainUI#0" expanded="false" />
+            <element signature="method#frozen#0;class#MainUI#0" expanded="false" />
+            <element signature="method#eliminateRow#0;class#MainUI#0" expanded="false" />
             <element signature="method#refreshTargetBlock#0;class#MainUI#0" expanded="false" />
             <element signature="method#fuckRow#0;class#MainUI#0" expanded="false" />
             <element signature="method#isFullRow#0;class#MainUI#0" expanded="false" />
-            <marker date="1486441629764" expanded="false" signature="9121:15494" ph="{...}" />
-            <marker date="1486441629764" expanded="false" signature="9191:10112" ph="{...}" />
-            <marker date="1486441629764" expanded="false" signature="10833:10933" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -953,12 +992,17 @@
           <folding>
             <element signature="method#MainUI#0;class#MainUI#0" expanded="false" />
             <element signature="method#moveTargetBlock#0;class#MainUI#0" expanded="false" />
+            <element signature="class#KeyAd#0;class#MainUI#0" expanded="false" />
+            <element signature="method#keyPressed#0;class#KeyAd#0;class#MainUI#0" expanded="false" />
             <element signature="method#load#0;class#KeyAd#0;class#MainUI#0" expanded="false" />
             <element signature="method#save#0;class#KeyAd#0;class#MainUI#0" expanded="false" />
             <element signature="class#MouseAd#0;class#MainUI#0" expanded="false" />
             <element signature="method#mouseClicked#0;class#MouseAd#0;class#MainUI#0" expanded="false" />
+            <element signature="method#pauseAndOverMenuMouseClickOp#0;class#MouseAd#0;class#MainUI#0" expanded="false" />
             <element signature="method#mouseMoved#0;class#MouseAd#0;class#MainUI#0" expanded="false" />
+            <element signature="method#pauseAndOverMenuMouseMotionOp#0;class#MouseAd#0;class#MainUI#0" expanded="false" />
             <element signature="method#drawOver#0;class#HB#0;class#MainUI#0" expanded="false" />
+            <element signature="method#drawGameImage#0;class#HB#0;class#MainUI#0" expanded="false" />
             <element signature="method#drawGaming#0;class#HB#0;class#MainUI#0" expanded="false" />
             <element signature="method#drawCountDown#0;class#HB#0;class#MainUI#0" expanded="false" />
             <element signature="method#drawWelcome#0;class#HB#0;class#MainUI#0" expanded="false" />
@@ -969,12 +1013,11 @@
             <element signature="method#main#0;class#MainUI#0" expanded="false" />
             <element signature="method#run#0;class#MainUI#0" expanded="false" />
             <element signature="method#blockDrop#0;class#MainUI#0" expanded="false" />
+            <element signature="method#frozen#0;class#MainUI#0" expanded="false" />
+            <element signature="method#eliminateRow#0;class#MainUI#0" expanded="false" />
             <element signature="method#refreshTargetBlock#0;class#MainUI#0" expanded="false" />
             <element signature="method#fuckRow#0;class#MainUI#0" expanded="false" />
             <element signature="method#isFullRow#0;class#MainUI#0" expanded="false" />
-            <marker date="1486441629764" expanded="false" signature="9121:15494" ph="{...}" />
-            <marker date="1486441629764" expanded="false" signature="9191:10112" ph="{...}" />
-            <marker date="1486441629764" expanded="false" signature="10833:10933" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -986,12 +1029,17 @@
           <folding>
             <element signature="method#MainUI#0;class#MainUI#0" expanded="false" />
             <element signature="method#moveTargetBlock#0;class#MainUI#0" expanded="false" />
+            <element signature="class#KeyAd#0;class#MainUI#0" expanded="false" />
+            <element signature="method#keyPressed#0;class#KeyAd#0;class#MainUI#0" expanded="false" />
             <element signature="method#load#0;class#KeyAd#0;class#MainUI#0" expanded="false" />
             <element signature="method#save#0;class#KeyAd#0;class#MainUI#0" expanded="false" />
             <element signature="class#MouseAd#0;class#MainUI#0" expanded="false" />
             <element signature="method#mouseClicked#0;class#MouseAd#0;class#MainUI#0" expanded="false" />
+            <element signature="method#pauseAndOverMenuMouseClickOp#0;class#MouseAd#0;class#MainUI#0" expanded="false" />
             <element signature="method#mouseMoved#0;class#MouseAd#0;class#MainUI#0" expanded="false" />
+            <element signature="method#pauseAndOverMenuMouseMotionOp#0;class#MouseAd#0;class#MainUI#0" expanded="false" />
             <element signature="method#drawOver#0;class#HB#0;class#MainUI#0" expanded="false" />
+            <element signature="method#drawGameImage#0;class#HB#0;class#MainUI#0" expanded="false" />
             <element signature="method#drawGaming#0;class#HB#0;class#MainUI#0" expanded="false" />
             <element signature="method#drawCountDown#0;class#HB#0;class#MainUI#0" expanded="false" />
             <element signature="method#drawWelcome#0;class#HB#0;class#MainUI#0" expanded="false" />
@@ -1002,12 +1050,11 @@
             <element signature="method#main#0;class#MainUI#0" expanded="false" />
             <element signature="method#run#0;class#MainUI#0" expanded="false" />
             <element signature="method#blockDrop#0;class#MainUI#0" expanded="false" />
+            <element signature="method#frozen#0;class#MainUI#0" expanded="false" />
+            <element signature="method#eliminateRow#0;class#MainUI#0" expanded="false" />
             <element signature="method#refreshTargetBlock#0;class#MainUI#0" expanded="false" />
             <element signature="method#fuckRow#0;class#MainUI#0" expanded="false" />
             <element signature="method#isFullRow#0;class#MainUI#0" expanded="false" />
-            <marker date="1486441629764" expanded="false" signature="9121:15494" ph="{...}" />
-            <marker date="1486441629764" expanded="false" signature="9191:10112" ph="{...}" />
-            <marker date="1486441629764" expanded="false" signature="10833:10933" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -1019,12 +1066,17 @@
           <folding>
             <element signature="method#MainUI#0;class#MainUI#0" expanded="false" />
             <element signature="method#moveTargetBlock#0;class#MainUI#0" expanded="false" />
+            <element signature="class#KeyAd#0;class#MainUI#0" expanded="false" />
+            <element signature="method#keyPressed#0;class#KeyAd#0;class#MainUI#0" expanded="false" />
             <element signature="method#load#0;class#KeyAd#0;class#MainUI#0" expanded="false" />
             <element signature="method#save#0;class#KeyAd#0;class#MainUI#0" expanded="false" />
             <element signature="class#MouseAd#0;class#MainUI#0" expanded="false" />
             <element signature="method#mouseClicked#0;class#MouseAd#0;class#MainUI#0" expanded="false" />
+            <element signature="method#pauseAndOverMenuMouseClickOp#0;class#MouseAd#0;class#MainUI#0" expanded="false" />
             <element signature="method#mouseMoved#0;class#MouseAd#0;class#MainUI#0" expanded="false" />
+            <element signature="method#pauseAndOverMenuMouseMotionOp#0;class#MouseAd#0;class#MainUI#0" expanded="false" />
             <element signature="method#drawOver#0;class#HB#0;class#MainUI#0" expanded="false" />
+            <element signature="method#drawGameImage#0;class#HB#0;class#MainUI#0" expanded="false" />
             <element signature="method#drawGaming#0;class#HB#0;class#MainUI#0" expanded="false" />
             <element signature="method#drawCountDown#0;class#HB#0;class#MainUI#0" expanded="false" />
             <element signature="method#drawWelcome#0;class#HB#0;class#MainUI#0" expanded="false" />
@@ -1035,12 +1087,11 @@
             <element signature="method#main#0;class#MainUI#0" expanded="false" />
             <element signature="method#run#0;class#MainUI#0" expanded="false" />
             <element signature="method#blockDrop#0;class#MainUI#0" expanded="false" />
+            <element signature="method#frozen#0;class#MainUI#0" expanded="false" />
+            <element signature="method#eliminateRow#0;class#MainUI#0" expanded="false" />
             <element signature="method#refreshTargetBlock#0;class#MainUI#0" expanded="false" />
             <element signature="method#fuckRow#0;class#MainUI#0" expanded="false" />
             <element signature="method#isFullRow#0;class#MainUI#0" expanded="false" />
-            <marker date="1486441629764" expanded="false" signature="9121:15494" ph="{...}" />
-            <marker date="1486441629764" expanded="false" signature="9191:10112" ph="{...}" />
-            <marker date="1486441629764" expanded="false" signature="10833:10933" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -1052,12 +1103,17 @@
           <folding>
             <element signature="method#MainUI#0;class#MainUI#0" expanded="false" />
             <element signature="method#moveTargetBlock#0;class#MainUI#0" expanded="false" />
+            <element signature="class#KeyAd#0;class#MainUI#0" expanded="false" />
+            <element signature="method#keyPressed#0;class#KeyAd#0;class#MainUI#0" expanded="false" />
             <element signature="method#load#0;class#KeyAd#0;class#MainUI#0" expanded="false" />
             <element signature="method#save#0;class#KeyAd#0;class#MainUI#0" expanded="false" />
             <element signature="class#MouseAd#0;class#MainUI#0" expanded="false" />
             <element signature="method#mouseClicked#0;class#MouseAd#0;class#MainUI#0" expanded="false" />
+            <element signature="method#pauseAndOverMenuMouseClickOp#0;class#MouseAd#0;class#MainUI#0" expanded="false" />
             <element signature="method#mouseMoved#0;class#MouseAd#0;class#MainUI#0" expanded="false" />
+            <element signature="method#pauseAndOverMenuMouseMotionOp#0;class#MouseAd#0;class#MainUI#0" expanded="false" />
             <element signature="method#drawOver#0;class#HB#0;class#MainUI#0" expanded="false" />
+            <element signature="method#drawGameImage#0;class#HB#0;class#MainUI#0" expanded="false" />
             <element signature="method#drawGaming#0;class#HB#0;class#MainUI#0" expanded="false" />
             <element signature="method#drawCountDown#0;class#HB#0;class#MainUI#0" expanded="false" />
             <element signature="method#drawWelcome#0;class#HB#0;class#MainUI#0" expanded="false" />
@@ -1068,12 +1124,11 @@
             <element signature="method#main#0;class#MainUI#0" expanded="false" />
             <element signature="method#run#0;class#MainUI#0" expanded="false" />
             <element signature="method#blockDrop#0;class#MainUI#0" expanded="false" />
+            <element signature="method#frozen#0;class#MainUI#0" expanded="false" />
+            <element signature="method#eliminateRow#0;class#MainUI#0" expanded="false" />
             <element signature="method#refreshTargetBlock#0;class#MainUI#0" expanded="false" />
             <element signature="method#fuckRow#0;class#MainUI#0" expanded="false" />
             <element signature="method#isFullRow#0;class#MainUI#0" expanded="false" />
-            <marker date="1486441629764" expanded="false" signature="9121:15494" ph="{...}" />
-            <marker date="1486441629764" expanded="false" signature="9191:10112" ph="{...}" />
-            <marker date="1486441629764" expanded="false" signature="10833:10933" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -1144,19 +1199,34 @@
         <state />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/medias/defeat1.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/medias/defeat.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/ui/MainUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="473" column="23" lean-forward="false" selection-start-line="473" selection-start-column="23" selection-end-line="473" selection-end-column="23" />
+        <state relative-caret-position="253">
+          <caret line="283" column="43" lean-forward="false" selection-start-line="283" selection-start-column="43" selection-end-line="283" selection-end-column="43" />
           <folding>
             <element signature="method#MainUI#0;class#MainUI#0" expanded="false" />
             <element signature="method#moveTargetBlock#0;class#MainUI#0" expanded="false" />
+            <element signature="class#KeyAd#0;class#MainUI#0" expanded="false" />
+            <element signature="method#keyPressed#0;class#KeyAd#0;class#MainUI#0" expanded="false" />
             <element signature="method#load#0;class#KeyAd#0;class#MainUI#0" expanded="false" />
             <element signature="method#save#0;class#KeyAd#0;class#MainUI#0" expanded="false" />
             <element signature="class#MouseAd#0;class#MainUI#0" expanded="false" />
             <element signature="method#mouseClicked#0;class#MouseAd#0;class#MainUI#0" expanded="false" />
+            <element signature="method#pauseAndOverMenuMouseClickOp#0;class#MouseAd#0;class#MainUI#0" expanded="false" />
             <element signature="method#mouseMoved#0;class#MouseAd#0;class#MainUI#0" expanded="false" />
+            <element signature="method#pauseAndOverMenuMouseMotionOp#0;class#MouseAd#0;class#MainUI#0" expanded="false" />
             <element signature="method#drawOver#0;class#HB#0;class#MainUI#0" expanded="false" />
+            <element signature="method#drawGameImage#0;class#HB#0;class#MainUI#0" expanded="false" />
             <element signature="method#drawGaming#0;class#HB#0;class#MainUI#0" expanded="false" />
             <element signature="method#drawCountDown#0;class#HB#0;class#MainUI#0" expanded="false" />
             <element signature="method#drawWelcome#0;class#HB#0;class#MainUI#0" expanded="false" />
@@ -1167,12 +1237,11 @@
             <element signature="method#main#0;class#MainUI#0" expanded="false" />
             <element signature="method#run#0;class#MainUI#0" expanded="false" />
             <element signature="method#blockDrop#0;class#MainUI#0" expanded="false" />
+            <element signature="method#frozen#0;class#MainUI#0" expanded="false" />
+            <element signature="method#eliminateRow#0;class#MainUI#0" expanded="false" />
             <element signature="method#refreshTargetBlock#0;class#MainUI#0" expanded="false" />
             <element signature="method#fuckRow#0;class#MainUI#0" expanded="false" />
             <element signature="method#isFullRow#0;class#MainUI#0" expanded="false" />
-            <marker date="1486441629764" expanded="false" signature="9121:15494" ph="{...}" />
-            <marker date="1486441629764" expanded="false" signature="9191:10112" ph="{...}" />
-            <marker date="1486441629764" expanded="false" signature="10833:10933" ph="{...}" />
           </folding>
         </state>
       </provider>
