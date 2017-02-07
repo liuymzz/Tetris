@@ -31,6 +31,8 @@ public class MainUI extends JFrame implements Runnable {
     private GameImage defeate = new GameImage("defeat1.png", 100, -Medias.getImage("defeat.png").getHeight());
     private GameImage restartImage = new GameImage("restart.png", 100, Constants.WINDOW_HEIGHT - 100);
     private int score = 0;
+    private int eliminateLine = 0;      //用来记录消除的行数，提供给道具一使用
+    private int prop_1_Times = 1;       //道具一的可用次数
 
     public MainUI() {
         setSize(Constants.WINDOW_WIDTH, Constants.WINDOW_HEIGHT);
@@ -69,40 +71,51 @@ public class MainUI extends JFrame implements Runnable {
                         block.rotate();
                         block.isRotateSuccess(map);
                         refreshTargetBlock();
-                        break;
+                        return;
                     case KeyEvent.VK_DOWN:
                         block.moveDown(map);
-                        break;
+                        return;
                     case KeyEvent.VK_LEFT:
                         block.moveLeft(map);
                         refreshTargetBlock();
-                        break;
+                        return;
                     case KeyEvent.VK_RIGHT:
                         block.moveRight(map);
                         refreshTargetBlock();
-                        break;
+                        return;
                     case KeyEvent.VK_SPACE:
                         SoundUtils.Play(Medias.getAudio("sfx_harddrop.wav"), false);
                         while (block.moveDown(map)) {
 
                         }
                         frozen();
-                        break;
+                        return;
                     case KeyEvent.VK_S:
                         save();
-                        break;
+                        return;
                     case KeyEvent.VK_L:
                         load();
-                        break;
+                        return;
                 }
             }
 
-            if (e.getKeyCode() == KeyEvent.VK_1) {
+            if (e.getKeyCode() == KeyEvent.VK_P) {
                 if (state == state.GAMING) {
                     state = GameState.PAUSE;
                 } else if (state == GameState.PAUSE) {
                     state = GameState.GAMING;
                 }
+                return;
+            }
+
+            if(e.getKeyCode() == KeyEvent.VK_1){
+                if(state == GameState.GAMING){
+                    state = GameState.PROP_addBlock;
+                }else if(state == GameState.PROP_addBlock){
+                    eliminateRow();
+                    state = GameState.GAMING;
+                }
+                return;
             }
 
         }
@@ -156,7 +169,11 @@ public class MainUI extends JFrame implements Runnable {
                 } else if (exitImage.getRectangle().contains(e.getX(), e.getY())) {
                     System.exit(0);
                 }
-            } else if (state == GameState.OVER) {
+
+                return;
+            }
+
+            if (state == GameState.OVER) {
                 if (restartImage.getRectangle().contains(e.getX(), e.getY())) {
                     for (int i = 0; i < map.length; i++) {
                         for (int j = 0; j < map[i].length; j++) {
@@ -171,7 +188,32 @@ public class MainUI extends JFrame implements Runnable {
                 } else if (exitImage.getRectangle().contains(e.getX(), e.getY())) {
                     System.exit(0);
                 }
+
+                return;
             }
+
+            if(state == GameState.PROP_addBlock){
+                if(prop_1_Times > 0){
+                    int xx = e.getX() / Constants.BLOCK_SIZE;
+                    int yy = e.getY() / Constants.BLOCK_SIZE;
+                    if(xx < Constants.COLUMN && yy < Constants.ROW){
+                        if(map[yy][xx] == 0){
+                            map[yy][xx] = 1;
+                        }else{
+                            map[yy][xx] = 0;
+                        }
+                        prop_1_Times --;
+                    }else{
+                        SoundUtils.Play(Medias.getAudio("sfx_harddrop.wav"),false);
+                    }
+
+
+                }else{
+                    SoundUtils.Play(Medias.getAudio("sfx_harddrop.wav"),false);
+                }
+            }
+
+            return;
         }
 
         @Override
@@ -203,10 +245,7 @@ public class MainUI extends JFrame implements Runnable {
         protected void paintComponent(Graphics g) {
             g.clearRect(0, 0, Constants.WINDOW_WIDTH, Constants.WINDOW_HEIGHT);
             if (state == GameState.GAMING) {
-                drawMap(g);
-                drawBlock(g);
-                drawTargetBlock(g);
-                drawNextBlock(g);
+                drawGaming(g);
                 g.setColor(Color.white);
                 g.setFont(new Font("微软雅黑", Font.BOLD, Constants.BLOCK_SIZE / 2));
                 g.drawString("您消除了" + score + "行", 11 * Constants.BLOCK_SIZE, 7 * Constants.BLOCK_SIZE);
@@ -217,27 +256,41 @@ public class MainUI extends JFrame implements Runnable {
             } else if (state == GameState.WELCOME) {
                 drawWelcome(g);
             } else if (state == GameState.PAUSE) {
-                drawMap(g);
-                drawBlock(g);
-                drawTargetBlock(g);
-                drawNextBlock(g);
+                drawGaming(g);
             } else if (state == GameState.OVER) {
-                g.drawImage(Medias.getImage("bg.jpg"), 0, 0, Constants.WINDOW_WIDTH, Constants.WINDOW_HEIGHT, this);
-                drawGameImage(g, defeate);
-                drawGameImage(g, restartImage);
-                drawGameImage(g, exitImage);
-                g.setColor(Color.WHITE);
-                g.setFont(new Font("微软雅黑", Font.BOLD, Constants.BLOCK_SIZE / 2));
-                g.drawString("您消除了" + score + "行", 7 * Constants.BLOCK_SIZE, 12 * Constants.BLOCK_SIZE);
-                g.drawString("历史最佳：" + Fac.getMaxScore(), 7 * Constants.BLOCK_SIZE, 14 * Constants.BLOCK_SIZE);
+                drawOver(g);
+            }else if(state == GameState.PROP_addBlock){
+                drawGaming(g);
             }
 
         }
 
+        //画结束界面
+        private void drawOver(Graphics g){
+            g.drawImage(Medias.getImage("bg.jpg"), 0, 0, Constants.WINDOW_WIDTH, Constants.WINDOW_HEIGHT, this);
+            drawGameImage(g, defeate);
+            drawGameImage(g, restartImage);
+            drawGameImage(g, exitImage);
+            g.setColor(Color.WHITE);
+            g.setFont(new Font("微软雅黑", Font.BOLD, Constants.BLOCK_SIZE / 2));
+            g.drawString("您消除了" + score + "行", 7 * Constants.BLOCK_SIZE, 12 * Constants.BLOCK_SIZE);
+            g.drawString("历史最佳：" + Fac.getMaxScore(), 7 * Constants.BLOCK_SIZE, 14 * Constants.BLOCK_SIZE);
+        }
+
+        //画游戏图片素材对象
         private void drawGameImage(Graphics g, GameImage gameImage) {
             g.drawImage(gameImage.getImage(), gameImage.getX(), gameImage.getY(), this);
         }
 
+        //画游戏中的界面
+        private void drawGaming(Graphics g){
+            drawMap(g);
+            drawBlock(g);
+            drawTargetBlock(g);
+            drawNextBlock(g);
+        }
+
+        //画倒计时
         private void drawCountDown(Graphics g) {
             g.setColor(Color.black);
             g.setFont(new Font("微软雅黑", Font.ITALIC, countDown.getSize()));
@@ -246,6 +299,7 @@ public class MainUI extends JFrame implements Runnable {
 
         }
 
+        //画欢迎界面
         private void drawWelcome(Graphics g) {
             g.drawImage(Medias.getImage("bg.jpg"), 0, 0, Constants.WINDOW_WIDTH, Constants.WINDOW_HEIGHT, this);
             g.setFont(new Font("微软雅黑", Font.BOLD, welcomeFont.getSize()));
@@ -254,6 +308,7 @@ public class MainUI extends JFrame implements Runnable {
             g.drawImage(exitImage.getImage(), exitImage.getX(), exitImage.getY(), this);
         }
 
+        //画下一个方块
         private void drawNextBlock(Graphics g) {
             for (int i = 0; i < nextBlock.getBlock().length; i++) {
                 for (int j = 0; j < nextBlock.getBlock()[i].length; j++) {
@@ -270,6 +325,7 @@ public class MainUI extends JFrame implements Runnable {
             }
         }
 
+        //画提示方块
         private void drawTargetBlock(Graphics g) {
             g.setColor(Color.WHITE);
             for (int i = 0; i < targetBlock.getBlock().length; i++) {
@@ -285,6 +341,7 @@ public class MainUI extends JFrame implements Runnable {
             }
         }
 
+        //画背景
         private void drawMap(Graphics g) {
             for (int i = 0; i < map.length; i++) {
                 for (int j = 0; j < map[i].length; j++) {
@@ -310,6 +367,7 @@ public class MainUI extends JFrame implements Runnable {
             g.fill3DRect((Constants.COLUMN) * Constants.BLOCK_SIZE, 0, (Constants.WINDOW_WIDTH - Constants.COLUMN) * Constants.BLOCK_SIZE, Constants.WINDOW_HEIGHT, true);
         }
 
+        //画当前活动方块
         private void drawBlock(Graphics g) {
             for (int i = 0; i < block.getBlock().length; i++) {
                 for (int j = 0; j < block.getBlock()[i].length; j++) {
@@ -412,12 +470,23 @@ public class MainUI extends JFrame implements Runnable {
         block = nextBlock;
         refreshTargetBlock();
         nextBlock = Fac.getBlock();
+
+        eliminateRow();
+
+    }
+
+    //消除掉所有可以消除的行
+    private void eliminateRow(){
         int index;
         while ((index = isFullRow()) != -1) {
             fuckRow(index);
+            eliminateLine ++;
+            if(eliminateLine == 5){
+                prop_1_Times ++;
+                eliminateLine = 0;
+            }
         }
         refreshTargetBlock();
-
     }
 
     //当前方块的状态改变后需要刷新targetBlock
