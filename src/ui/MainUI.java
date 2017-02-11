@@ -31,8 +31,9 @@ public class MainUI extends JFrame implements Runnable {
     private GameImage defeate = new GameImage("defeat1.png", 100, -Medias.getImage("defeat.png").getHeight());
     private GameImage restartImage = new GameImage("restart.png", 100, Constants.WINDOW_HEIGHT - 100);
     private int score = 0;
-    private int eliminateLine = 0;      //用来记录消除的行数，提供给道具一使用
-    private int prop_1_Times = 1;       //道具一的可用次数
+    private int blockDropInterval = 40;     //方块下落速度
+    private int eliminateLine = 0;          //用来记录消除的行数，提供给道具一使用
+    private int prop_1_Times = 1;           //道具一的可用次数
 
     public MainUI() {
         setSize(Constants.WINDOW_WIDTH, Constants.WINDOW_HEIGHT);
@@ -272,24 +273,41 @@ public class MainUI extends JFrame implements Runnable {
                 g.setFont(new Font("微软雅黑", Font.BOLD, Constants.BLOCK_SIZE / 2));
                 g.drawString("您消除了" + score + "行", 11 * Constants.BLOCK_SIZE, 7 * Constants.BLOCK_SIZE);
                 g.drawString("道具一可用次数："+prop_1_Times,11 * Constants.BLOCK_SIZE,8 * Constants.BLOCK_SIZE);
-            } else if (state == GameState.GAME_SELECT) {
+                return;
+            }
+
+            if (state == GameState.GAME_SELECT) {
                 drawWelcome(g);
-            } else if (state == GameState.COUNTDOWN) {
+                return;
+            }
+
+            if (state == GameState.COUNTDOWN) {
                 drawCountDown(g);
-            } else if (state == GameState.WELCOME) {
+                return;
+            }
+
+            if (state == GameState.WELCOME) {
                 drawWelcome(g);
-            } else if (state == GameState.PAUSE) {
+                return;
+            }
+            if (state == GameState.PAUSE) {
                 drawGaming(g);
                 g.drawImage(Medias.getImage("bg.jpg"), 0, 0, Constants.WINDOW_WIDTH, Constants.WINDOW_HEIGHT, this);
                 drawGameImage(g, restartImage);
                 drawGameImage(g, exitImage);
-            } else if (state == GameState.OVER) {
+                return;
+            }
+            if (state == GameState.OVER) {
                 drawOver(g);
-            }else if(state == GameState.PROP_addBlock){
+                return;
+            }
+
+            if(state == GameState.PROP_addBlock){
                 drawGaming(g);
                 g.setColor(Color.white);
                 g.setFont(new Font("微软雅黑", Font.BOLD, Constants.BLOCK_SIZE / 2));
                 g.drawString("道具一可用次数："+prop_1_Times,11 * Constants.BLOCK_SIZE,8 * Constants.BLOCK_SIZE);
+                return;
             }
 
         }
@@ -314,8 +332,8 @@ public class MainUI extends JFrame implements Runnable {
         //画游戏中的界面
         private void drawGaming(Graphics g){
             drawMap(g);
-            drawBlock(g);
             drawTargetBlock(g);
+            drawBlock(g);
             drawNextBlock(g);
         }
 
@@ -360,7 +378,7 @@ public class MainUI extends JFrame implements Runnable {
             for (int i = 0; i < targetBlock.getBlock().length; i++) {
                 for (int j = 0; j < targetBlock.getBlock()[i].length; j++) {
                     if (targetBlock.getBlock()[i][j] != 0) {
-                        g.draw3DRect(targetBlock.getX() * Constants.BLOCK_SIZE + j * Constants.BLOCK_SIZE,
+                        g.fill3DRect(targetBlock.getX() * Constants.BLOCK_SIZE + j * Constants.BLOCK_SIZE,
                                 targetBlock.getY() * Constants.BLOCK_SIZE + i * Constants.BLOCK_SIZE,
                                 Constants.BLOCK_SIZE,
                                 Constants.BLOCK_SIZE,
@@ -466,7 +484,7 @@ public class MainUI extends JFrame implements Runnable {
 
     private void blockDrop() {
         dropInterval++;
-        if (dropInterval >= 40) {
+        if (dropInterval >= blockDropInterval) {
             dropInterval = 0;
             if (block.moveDown(map) == false) {
                 frozen();
@@ -512,6 +530,7 @@ public class MainUI extends JFrame implements Runnable {
             eliminateLine ++;
             if(eliminateLine == 5){
                 prop_1_Times ++;
+                blockDropInterval -= 2;
                 eliminateLine = 0;
             }
         }
